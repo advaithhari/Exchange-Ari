@@ -5,19 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ari Exchange</title>
 
-    <script src="firebaseConfig.js" defer></script>
-</head>
+
+    <script src="lib/js/script.js" defer></script>
+    <link rel="stylesheet" href="lib/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+
+</head> 
 <body>
     <h1>ARI Exchange</h1>
+   
+  <!-- Set up a container element for the button -->
+  <div id="paypal-button-container"></div>
+
+  <!-- Include the PayPal JavaScript SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AazyLjRiJuckujgusTD_OM9JbFxtOAcHCWJr3KVqgFUP88WAxgf8mx1-V1BMCybVPlfbq4TsfOp4gOl5&currency=USD"></script>
+
+  <script>
+      // Render the PayPal button into #paypal-button-container
+      paypal.Buttons({
+
+          // Set up the transaction
+          createOrder: function(data, actions) {
+              return actions.order.create({
+                  purchase_units: [{
+                      amount: {
+                          value: '0.01'
+                      }
+                  }]
+              });
+          },
+          
+
+          // Finalize the transaction
+          onApprove: function(data, actions) {
+              return actions.order.capture().then(function(details) {
+                  // Show a success message to the buyer
+                  alert('Transaction completed by ' + details.payer.name.given_name + '!');
+              });
+          }
+
+
+      }).render('#paypal-button-container');
+  </script>
 </body>
 </html>
 
 
 
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+<!-- 
+SHIPENGINE API -->
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
+<!-- mKC00lFMqQmvf+U+SI6zckLWLfasW+NIeaZXnsyCEQ -->

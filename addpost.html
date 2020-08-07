@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add post</title>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="lib/js/firebaseConfig.js" defer></script>
+
+    <link rel="stylesheet" href="lib/css/style.css">
+    <script src="lib/js/script.js" defer></script>
+</head>
+<body>
+     <div class="allMessages"></div>
+
+    </div>
+
+    <form>
+        <input type="text" id="username" placeholder="Username">
+        <select id="categories">
+
+        </select>
+        <input type="text" id="message" placeholder="Message">
+        <button type="button" id="submitButton">Submit</button>
+    </form>
+</body>
+</html>

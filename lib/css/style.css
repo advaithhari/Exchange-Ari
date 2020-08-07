@@ -1,0 +1,20 @@
+.blogCard {
+    display: flex;
+    border: 1px solid gray;
+}
+
+.author, .post, .category{
+    font-style: bold;
+    margin: 2%;
+}
+body{
+    background-color: gray;
+  
+}
+h1{
+    font-family: 'Audiowide', cursive;
+    background: -webkit-linear-gradient(#FFC46C, #9328E8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
