@@ -4,49 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ari Exchange</title>
-
+    
 
     <script src="lib/js/script.js" defer></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="lib/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&family=Roboto&display=swap" rel="stylesheet">
 
 </head> 
 <body>
-    <h1>ARI Exchange</h1>
-   
-  <!-- Set up a container element for the button -->
-  <div id="paypal-button-container"></div>
 
-  <!-- Include the PayPal JavaScript SDK -->
-  <script src="https://www.paypal.com/sdk/js?client-id=AazyLjRiJuckujgusTD_OM9JbFxtOAcHCWJr3KVqgFUP88WAxgf8mx1-V1BMCybVPlfbq4TsfOp4gOl5&currency=USD"></script>
 
-  <script>
-      // Render the PayPal button into #paypal-button-container
-      paypal.Buttons({
+    
 
-          // Set up the transaction
-          createOrder: function(data, actions) {
-              return actions.order.create({
-                  purchase_units: [{
-                      amount: {
-                          value: '0.01'
-                      }
-                  }]
-              });
-          },
+    <nav>
+        <h1>ARI Exchange</h1>  
+        <div class="nav-right">
+            <a class = "navbutton" href="#">Explore</a>
+            <a class = "navbutton" href="#">Home</a>
+        </div>
+    </nav>
+    
+    <div class="description"> 
+        <div class="big-desc">
+         <p class="phrase">Request, Recieve, Repeat. A New Way to Connect</p>
+        </div>
+        <p class="small-desc">
+            Need anything? Ask away! Put in a request for anything - advice, a specific item, whatever you want!
+        </p>
+        <button class = "crequests"> See All Requests</button>
+
+    </div>
+
+    <div class = "curve">
+
+    </div>
+
+    <div class ="card-container">
+        <div class ="card">
+
           
 
-          // Finalize the transaction
-          onApprove: function(data, actions) {
-              return actions.order.capture().then(function(details) {
-                  // Show a success message to the buyer
-                  alert('Transaction completed by ' + details.payer.name.given_name + '!');
-              });
-          }
+           
+        </div>
+        <div class ="card">
+            </div>
+            <div class ="card">
+            </div>
+    </div>
+<!-- 
+<div id="paypal-button-container"></div>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AazyLjRiJuckujgusTD_OM9JbFxtOAcHCWJr3KVqgFUP88WAxgf8mx1-V1BMCybVPlfbq4TsfOp4gOl5&currency=USD"></script>
+
+<script>
+    // Render the PayPal button into #paypal-button-container
+    paypal.Buttons({
+
+        // Set up the transaction
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '0.01'
+                    }
+                }]
+            });
+        },
+        
+
+        // Finalize the transaction
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                // Show a success message to the buyer
+                alert('Transaction completed by ' + details.payer.name.given_name + '!');
+            });
+        }
 
 
-      }).render('#paypal-button-container');
-  </script>
+    }).render('#paypal-button-container');
+</script>
+   -->
+
 </body>
 </html>
 
