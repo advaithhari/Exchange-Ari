@@ -1,9 +1,52 @@
+
+body {
+    background-color:#404040;  
+}
+
+h1 {
+    font-family: 'Audiowide', cursive;
+    background: -webkit-linear-gradient(98deg,#FFC46C, #9328E8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+   font-size: 350%;
+}
+
+nav {
+    display: flex;
+    padding: 1% 5%;
+    background: #313030;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-right {
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+}
+
+
+.navbutton {
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 33px;
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+}
+
+a:hover {
+    text-decoration: none;
+    color: lightgray;
+}
+
+
 .description {
+    /* position: absolute */
     display: flex;
     flex-direction: column;
-    /* border: 1px solid black;     */
-    margin: 2% 40% 2% 10%;;
-
+    margin: 2% 42% 2% 10%;;
 }
 
 .phrase{
@@ -15,27 +58,19 @@
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
-    font-size: 72px;
-    line-height: 100px;
+    font-size: 56px;
+    line-height: 150%;
     /* or 139% */
-    margin: 6% 0;
-
-    letter-spacing: 0.05em;
-
+    letter-spacing: 0.03em;
     color: #C5BFEF;
 }
 
 .small-desc {
-     /* position: absolute;
-    width: 471px;
-    height: 160px;
-    left: 101px;
-    top: 534px;  */
 
     font-family: Nunito;
     font-style: normal;
     font-weight: 200;
-    font-size: 30px;
+    font-size: 24px;
     line-height: 41px;
     display: flex;
     align-items: center;
@@ -45,54 +80,164 @@
     color: #E9E9E9;
 }
 
-.navbutton {
-   
-font-family: Nunito;
-font-style: normal;
-font-weight: 200;
-font-size: 24px;
-line-height: 33px;
-display: flex;
-align-items: center;
-letter-spacing: 0.05em;
+.crequests {
 
-color: #FFFFFF;
+    width: 30%;
+    /* height: %; */
+    background: linear-gradient(268deg, #EDB241 0%, #B51EEA 97.59%);
+    border-radius: 20px;
+
+    text-align: center;
+
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    /* line-height: 49px; */
+    /* display: flex;
+    align-items: center;
+    text-align: center; */
+    letter-spacing: 0.05em;
+
+    color: #FFFFFF;
 
 }
 
-.curve {
-  
-
-width: 100%;
-height: 179px;
-left: -26px;
-top: 845px; 
-
-background: linear-gradient(269.37deg, #FFC46C 2.49%, #9328E8 96.96%); 
+.curve-design-mobile {
+    display: none;
 }
 
+@media(max-width:950px) {
+    .description {
+        margin: 2% 15%;
+    }
+
+    .phrase {
+        font-size: 44px;
+    }
+
+    .small-desc {
+        font-size: 20px;
+    }
+
+    .curve-design-mobile {
+        display: inline;
+    }
+}
+
+@media(max-width:550px) {
+
+    nav {
+        flex-direction: column;
+        justify-content: center;
+        padding: 10%;
+        /* border: 10px solid black; */
+    }
+
+    #home-btn {
+        display: none;
+    }
+
+    #explore-btn {
+        background: linear-gradient(92.25deg, #C568FF 0%, #FFC46C 100%);
+        border-radius: 10px;
+        font-weight: 900;
+        padding: 2% 200%;
+    }
+
+    h1 {
+        font-family: Nunito;
+        font-weight: 300;
+        font-size: 48px;
+    }
+
+    
+    .description {
+        margin: 10% 1% 0 10%;
+    }
+
+    .phrase { 
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 60px;
+        /* or 167% */
+
+        letter-spacing: 0.05em;
+
+        color: #C5BFEF;
+    }
+
+    .small-desc {
+        font-family: Nunito;
+        font-style: normal;
+        font-weight: 200;
+        font-size: 18px;
+        line-height: 25px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.02em;
+
+        color: #E9E9E9;
+    }
+
+    .curve-design {
+        display: none;
+    }
+}
+
+/* 
+.search {
+    height: 200px;
+} */
 .card-container {
     
     display: flex;
     flex-direction: row;
-    align-items: left;
-     justify-content: space-between; 
+    align-items: center;
+     justify-content: space-evenly; 
+     height:800px
   
 
-  }
-  .card {
+}
+/* 
+.text {
+  position: relative;
+  top:30%
+} */
+.cardbutton{
+ 
+position: absolute;
+width: 20%;
+height: 5%;
+left: 10%;
+top: 10%;
+    width: 40%;
+   
+    font-family: 'Recursive', sans-serif;
+    background: linear-gradient(267.72deg, #3E66B7 0.77%, #80E1FF 93.62%);
+    border-radius: 20px;
+}
+.card {
+
+    width: 20%;
+    height: 66%;
+
   
 
-width: 316px;
-height: 404px;
-left: 150px;
-top: 354px;
+    background: linear-gradient(209.22deg, #C568FF -1.93%, #927D55 101.64%);
+    box-shadow: 10px 10px 4px 3px rgba(196, 123, 208, 0.25);
+    border-radius: 10px;
 
-background: linear-gradient(209.22deg, #C568FF -1.93%, #927D55 101.64%);
-box-shadow: 10px 10px 4px 3px rgba(196, 123, 208, 0.25);
-border-radius: 10px;
+}
+.card:hover {
+    width:20.5%;
+    height:66.5%;
+    cursor:pointer;
+    }
 
-      }
+
 
 .blogCard {
     display: flex;
@@ -103,61 +248,8 @@ border-radius: 10px;
     font-style: bold;
     margin: 2%;
 }
-body{
-    background-color:#404040;
-  
-}
-
-h1{
-    font-family: 'Audiowide', cursive;
-    background: -webkit-linear-gradient(98deg,#FFC46C, #9328E8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-   font-size: 350%;
-     padding-top:1%;   
-}
 
 
-    
 
-nav {
-    display: flex;
-    /* border-style: hidden; */
-    background: #313030;
-    height:100px;
-    /* justify-content: left; */
-    justify-content: space-between;
-}
 
-.crequests {
 
-    width: 30%;
-    height: 15%;
-    background: linear-gradient(268deg, #EDB241 0%, #B51EEA 97.59%);
-    border-radius: 20px;
-
-   
-    padding-top: 10px;  
-    text-align: center;
-
-    font-family: Nunito;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 24px;
-    line-height: 49px;
-    /* display: flex;
-    align-items: center;
-    text-align: center; */
-    letter-spacing: 0.05em;
-
-    color: #FFFFFF;
-
-}
-
-.explore{
-color:white;
-}
-
-.home{
-    color:white;
-}
