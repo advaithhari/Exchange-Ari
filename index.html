@@ -1,95 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ari Exchange</title>
+
     
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
 
-    <script src="lib/js/script.js" defer></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="lib/js/firebaseConfig.js" defer></script>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+   
     <link rel="stylesheet" href="lib/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&family=Roboto&display=swap"
+        rel="stylesheet">
 
     <link rel="icon" href="src/Capture.PNG">
-</head> 
+
+  
+    <script src="lib/js/index.js" defer></script>
+    <script src="lib/js/cards.js" defer></script> 
+</head>
+
 <body>
 
     <nav>
-        <h1>ARI Exchange</h1>  
+        <h1>ARI Exchange</h1>
         <div class="nav-right">
-            <a id="explore-btn" class = "navbutton" href="#">EXPLORE</a>
-            <a id="home-btn" class = "navbutton" href="#">HOME</a>
+            <a id="explore-btn" class="navbutton" href="#">EXPLORE</a>
+            <a id="home-btn" class="navbutton" href="#">HOME</a>
         </div>
     </nav>
-    
-    <div class="description"> 
+
+    <div class="description">
         <div class="big-desc">
-         <p class="phrase">Request, Receive, Repeat. A New Way to Connect</p>
+            <p class="phrase">Request, Receive, Repeat. A New Way to Connect</p>
         </div>
         <p class="small-desc">
             Need anything? Ask away! Put in a request for anything - advice, a specific item, whatever you want!
         </p>
         <br>
-        <button class = "crequests">See All Requests</button>
+        <button class="crequests">See All Requests</button>
 
     </div>
 
-    <svg class="curve-design" curve-design" transform="translate(0, -30)"" width="100%" height="250" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M1803 11.3542c-74.41-19.66855-300.22-20.917-910.832 55.3215C304.292 140.076 77.9024 141.651 0 124.114V257h1803V11.3542z" fill="#282828"/>
+    <svg class="curve-design" curve-design" transform="translate(0, -30)"" width=" 100%" height="250" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M1803 11.3542c-74.41-19.66855-300.22-20.917-910.832 55.3215C304.292 140.076 77.9024 141.651 0 124.114V257h1803V11.3542z"
+            fill="#282828" />
         <svg class="orange-curve" x="0" y="55" width="100%" height="179" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M1803 8.30039C1730.87-5.76964 1506.96-7.16285 891.567 46.4395 349.567 93.6491 115.332 98.1987 21.3997 89H0v90h1803V8.30039z" fill="url(#paint0_linear)"/>
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M1803 8.30039C1730.87-5.76964 1506.96-7.16285 891.567 46.4395 349.567 93.6491 115.332 98.1987 21.3997 89H0v90h1803V8.30039z"
+                fill="url(#paint0_linear)" />
             <defs>
-                <linearGradient id="paint0_linear" x1="1788.41" y1="16.9994" x2="26.7348" y2="219.748" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#FFC46C"/>
-                <stop offset="1" stop-color="#9328E8"/>
+                <linearGradient id="paint0_linear" x1="1788.41" y1="16.9994" x2="26.7348" y2="219.748"
+                    gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FFC46C" />
+                    <stop offset="1" stop-color="#9328E8" />
                 </linearGradient>
             </defs>
         </svg>
     </svg>
 
-    
+
 
     <svg class="curve-design-mobile" width="100%" height="560" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M915 9.87429C869.375-13.2921 747.45-2.31821 454.039 115.365 181.959 224.492 58.8931 241.862 7.63527 225.339H2.78164V560H914.101V115.365s.324-.45.899-1.293V9.87429zM2.78164 115.365s-.77374 1.025-2.063348 2.882H2.78164v-2.882z" fill="url(#paint0_linear)"/>
-    <defs>
-        <linearGradient id="paint0_linear" x1="14.542" y1="427.811" x2="919.83" y2="93.682" gradientUnits="userSpaceOnUse">
-        <stop stop-color="#B51EEA"/>
-        <stop offset="1" stop-color="#FFC46C"/>
-        </linearGradient>
-    </defs>
+        <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M915 9.87429C869.375-13.2921 747.45-2.31821 454.039 115.365 181.959 224.492 58.8931 241.862 7.63527 225.339H2.78164V560H914.101V115.365s.324-.45.899-1.293V9.87429zM2.78164 115.365s-.77374 1.025-2.063348 2.882H2.78164v-2.882z"
+            fill="url(#paint0_linear)" />
+        <defs>
+            <linearGradient id="paint0_linear" x1="14.542" y1="427.811" x2="919.83" y2="93.682"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#B51EEA" />
+                <stop offset="1" stop-color="#FFC46C" />
+            </linearGradient>
+        </defs>
     </svg>
 
-    
-    <div class = "search">
-        <form class="example" action="/action_page.php">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </form>
+
+    <div class="search">
+        <form class="example"">
+            <input id = " searchbar" type="text" placeholder="Search.." name="search">
+            <button class="searchbutton" type="submit"><i class="fa fa-search">search</i></button>
+        </form>
 
     </div>
-    
-    
-<div class ="card-container">
-        <div class ="card">
-            <button class ="cardbutton">Buy </button>
-        </div>
 
-        <div class ="card">
-            <button class ="cardbutton">Buy </button>
+    <div class="card-container">
 
-
+        <!-- <div class="card-row"> -->
+            <!-- <div class="card">
+                <button class="cardbutton">Buy </button>
+                <p class="cardtext">epic games</p>
             </div>
 
-            <div class ="card">
+            <div class="card">
+                <button class="cardbutton">Buy </button>
 
-                <button class ="cardbutton">Buy </button>
+                <p class="cardtext">games</p>
             </div>
-    </div> 
-<!-- 
+
+            <div class="card">
+                <p class="cardtext">games</p>
+                <button class="cardbutton">Buy </button>
+            </div> -->
+        <!-- </div> -->
+
+    </div>
+
+    <!-- 
 <div id="paypal-button-container"></div>
 
 <script src="https://www.paypal.com/sdk/js?client-id=AazyLjRiJuckujgusTD_OM9JbFxtOAcHCWJr3KVqgFUP88WAxgf8mx1-V1BMCybVPlfbq4TsfOp4gOl5&currency=USD"></script>
@@ -124,6 +151,8 @@
    -->
 
 </body>
+
+<
 </html>
 
 
