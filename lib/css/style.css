@@ -45,22 +45,27 @@ a:hover {
     color: lightgray;
 }
 
+.top-section {
+    display: flex;
+    margin: 5% 5%; 
+    align-content: center;
+    justify-content: center;
+}
+
 .description {
-    /* position: absolute */
     display: flex;
     flex-direction: column;
-    margin: 5% 25% 2% 15%;;
 }
 
 .phrase{
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
-    font-size: 56px;
+    font-size: 50px;
     line-height: 150%;
     letter-spacing: 0.03em;
     color: #C5BFEF;
-    width: 70%;
+    width: 60%;
     margin-bottom: 2%;
 }
 
@@ -74,7 +79,7 @@ a:hover {
     display: flex;
     align-items: center;
     letter-spacing: 0.02em;
-    width: 50%;
+    width: 40%;
     color: #E9E9E9;
 }
 
@@ -136,15 +141,16 @@ a:hover {
 .request-modal {
     pointer-events: none;
     font-family: Nunito;
+    letter-spacing: 0.05em;
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 70%;
+    width: 50%;
     transform: translate(-50%, -50%);
     border-radius: 4px;
     padding: 2%;
     opacity: 0;
-    background-color:#404040; 
+    background: #313030;
     transition: all 300ms;
 }
 
@@ -172,7 +178,7 @@ a:hover {
 
 .close-modal-button:hover {
     cursor: pointer;
-    color: black;
+    color: white;
 }
 
 .request-modal-form {
@@ -181,18 +187,40 @@ a:hover {
     margin: 2%;
 }
 
-.modal-user-input {
+label {
     font-family: Nunito;
-    color: white;
-    padding: 1% 10% 10% 1%;
-    border: 1px solid gray; 
-    border-radius: 0;
-    background: #313030;
+    font-weight: 100;
+    color: lightgray;
+    font-size: 18px;
+    margin: 1% 0;
+    letter-spacing: 0.1em;
 }
 
+.modal-user-input {
+    font-family: Roboto;
+    color: white;
+    background: #505050;
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+}
+
+#request-title, #request-category {
+    padding: 1%;
+}
+
+#request-description {
+    padding: 1% 10% 10% 1%;
+}
+
+.modal-user-input:focus {
+    outline: none;
+    border: 1px solid #D77882;
+    /* border-color: #D77882; */
+
+}
 
 .card-container {
-    
     display: flex;
     flex-direction: row;
     align-items: center;
