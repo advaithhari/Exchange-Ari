@@ -89,7 +89,7 @@ a:hover {
     margin-top: 5%;
     padding: 1%;
     background: linear-gradient(268deg, #EDB241 0%, #B51EEA 97.59%);
-    border-radius: 20px;
+    border-radius: 4px;
     text-align: center;
     font-family: Nunito;
     font-style: normal;
@@ -114,7 +114,7 @@ a:hover {
     width: 20%;
     height: 15%;
     background: linear-gradient(268deg, #EDB241 0%, #B51EEA 97.59%);
-    border-radius: 8px;
+    border-radius: 4px;
     color: white;
     display: flex;
     justify-content: center;
@@ -228,3 +228,4 @@ label {
     height:800px;
     flex-wrap: wrap;
 }
+
