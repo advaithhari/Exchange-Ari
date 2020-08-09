@@ -1,9 +1,13 @@
+* {
+    margin: 0;
+}
 
 body {
     background-color:#404040;  
 }
 
-h1 {
+
+.nav-title {
     font-family: 'Audiowide', cursive;
     background: -webkit-linear-gradient(98deg,#FFC46C, #9328E8);
     -webkit-background-clip: text;
@@ -13,7 +17,7 @@ h1 {
 
 nav {
     display: flex;
-    padding: 1% 5%;
+    padding: 1%;
     background: #313030;
     align-items: center;
     justify-content: space-between;
@@ -21,12 +25,11 @@ nav {
 
 .nav-right {
     display: flex;
-    justify-content: space-between;
-    width: 15%;
+    justify-content: space-around;
+    width: 18%;
 }
 
-
-.navbutton {
+.nav-button {
     font-family: Nunito;
     font-style: normal;
     font-weight: 200;
@@ -34,6 +37,7 @@ nav {
     line-height: 33px;
     letter-spacing: 0.05em;
     color: #FFFFFF;
+    text-decoration: none;
 }
 
 a:hover {
@@ -41,28 +45,23 @@ a:hover {
     color: lightgray;
 }
 
-
 .description {
     /* position: absolute */
     display: flex;
     flex-direction: column;
-    margin: 2% 42% 2% 10%;;
+    margin: 5% 25% 2% 15%;;
 }
 
 .phrase{
-        /* position: absolute;
-    width: 698px;
-    height: 215px;
-    left: 97px;
-    top: 226px;  */
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
     font-size: 56px;
     line-height: 150%;
-    /* or 139% */
     letter-spacing: 0.03em;
     color: #C5BFEF;
+    width: 70%;
+    margin-bottom: 2%;
 }
 
 .small-desc {
@@ -75,181 +74,129 @@ a:hover {
     display: flex;
     align-items: center;
     letter-spacing: 0.02em;
-    width: 70%;
-
+    width: 50%;
     color: #E9E9E9;
 }
 
 .crequests {
 
     width: 30%;
-    /* height: %; */
+    margin-top: 5%;
+    padding: 1%;
     background: linear-gradient(268deg, #EDB241 0%, #B51EEA 97.59%);
     border-radius: 20px;
-
     text-align: center;
-
     font-family: Nunito;
     font-style: normal;
-    font-weight: 800;
     font-size: 20px;
-    /* line-height: 49px; */
-    /* display: flex;
-    align-items: center;
-    text-align: center; */
     letter-spacing: 0.05em;
+    color: white;
+}
 
-    color: #FFFFFF;
+.crequests:hover {
+    cursor: pointer;
+}
+
+.user-menu {
+    display: flex;
+    justify-content: space-between;
+    margin: 5% 25%;
 
 }
 
-.curve-design-mobile {
+.request-button {
+    font-family: Nunito;
+    width: 20%;
+    height: 15%;
+    background: linear-gradient(268deg, #EDB241 0%, #B51EEA 97.59%);
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+    padding: 0.5%;
+}
+
+.request-button:hover {
+    cursor: pointer;
+}
+
+#modal-page-mask {
     display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7)
 }
 
-@media(max-width:950px) {
-    .description {
-        margin: 2% 15%;
-    }
-
-    .phrase {
-        font-size: 44px;
-    }
-
-    .small-desc {
-        font-size: 20px;
-    }
-
-    .curve-design-mobile {
-        display: inline;
-    }
+.request-modal {
+    pointer-events: none;
+    font-family: Nunito;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    transform: translate(-50%, -50%);
+    border-radius: 4px;
+    padding: 2%;
+    opacity: 0;
+    background-color:#404040; 
+    transition: all 300ms;
 }
 
-@media(max-width:550px) {
-
-    nav {
-        flex-direction: column;
-        justify-content: center;
-        padding: 10%;
-        /* border: 10px solid black; */
-    }
-
-    #home-btn {
-        display: none;
-    }
-
-    #explore-btn {
-        background: linear-gradient(92.25deg, #C568FF 0%, #FFC46C 100%);
-        border-radius: 10px;
-        font-weight: 900;
-        padding: 2% 200%;
-    }
-
-    h1 {
-        font-family: Nunito;
-        font-weight: 300;
-        font-size: 48px;
-    }
-
-    
-    .description {
-        margin: 10% 1% 0 10%;
-    }
-
-    .phrase { 
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 36px;
-        line-height: 60px;
-        /* or 167% */
-
-        letter-spacing: 0.05em;
-
-        color: #C5BFEF;
-    }
-
-    .small-desc {
-        font-family: Nunito;
-        font-style: normal;
-        font-weight: 200;
-        font-size: 18px;
-        line-height: 25px;
-        display: flex;
-        align-items: center;
-        letter-spacing: 0.02em;
-
-        color: #E9E9E9;
-    }
-
-    .curve-design {
-        display: none;
-    }
+.modal-top {
+    display: flex;
+    justify-content: space-between;
+    font-family: Roboto;
+    margin-bottom: 2%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid gray;
 }
 
-/* 
-.search {
-    height: 200px;
-} */
+.request-modal-title {
+    font-family: 'Nunito';
+    background: -webkit-linear-gradient(98deg,#FFC46C, #9328E8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 36px;
+}
+
+.close-modal-button {
+    color: gray;
+    transition: all 300ms;
+}
+
+.close-modal-button:hover {
+    cursor: pointer;
+    color: black;
+}
+
+.request-modal-form {
+    display: flex;
+    flex-direction: column;
+    margin: 2%;
+}
+
+.modal-user-input {
+    font-family: Nunito;
+    color: white;
+    padding: 1% 10% 10% 1%;
+    border: 1px solid gray; 
+    border-radius: 0;
+    background: #313030;
+}
+
+
 .card-container {
     
     display: flex;
     flex-direction: row;
     align-items: center;
-     justify-content: space-evenly; 
-     height:800px
-  
-
+    justify-content: space-evenly; 
+    height:800px;
+    flex-wrap: wrap;
 }
-/* 
-.text {
-  position: relative;
-  top:30%
-} */
-.cardbutton{
- 
-position: absolute;
-width: 20%;
-height: 5%;
-left: 10%;
-top: 10%;
-    width: 40%;
-   
-    font-family: 'Recursive', sans-serif;
-    background: linear-gradient(267.72deg, #3E66B7 0.77%, #80E1FF 93.62%);
-    border-radius: 20px;
-}
-.card {
-
-    width: 20%;
-    height: 66%;
-
-  
-
-    background: linear-gradient(209.22deg, #C568FF -1.93%, #927D55 101.64%);
-    box-shadow: 10px 10px 4px 3px rgba(196, 123, 208, 0.25);
-    border-radius: 10px;
-
-}
-.card:hover {
-    width:20.5%;
-    height:66.5%;
-    cursor:pointer;
-    }
-
-
-
-.blogCard {
-    display: flex;
-    border: 1px solid gray;
-}
-
-.author, .post, .category{
-    font-style: bold;
-    margin: 2%;
-}
-
-
-
-
-
