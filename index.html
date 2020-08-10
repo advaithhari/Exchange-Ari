@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARI Exchange</title>
-    
+
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
@@ -18,10 +19,13 @@
 
     <!-- Icons -->
     <link rel="icon" href="src/Capture.PNG">
+
     <!-- Scripts -->
     <script src="/lib/js/script.js" defer></script>
     <script src="/lib/js/requestModal.js" defer></script>
+    <script src="/lib/js/cards.js" defer></script>
 </head>
+
 <body>
     <nav>
         <p class="nav-title">ARI EXCHANGE</p>
@@ -43,42 +47,45 @@
             <button class="crequests">See All Requests</button>
         </div>
     </section>
-        <hr>
-        
-        <div class=user-menu>
-            <div class="search">
-                <form class="search-category">
-                    <input class="user-input id="search-category-input" type="text" placeholder="Search" name="search-category-input">
-                    <button class="search-button" type="submit"><i class="fa fa-search">search</i></button>
-                </form>
-            </div>
-        
-            <div class="request-button">
-                Make A Request!
-            </div>
-        </div>
-        
-        <div id="modal-page-mask"></div>
-        <div class="request-modal">
-            <div class="modal-top">
-                <p class="request-modal-title">Make your request!</p>
-                <p class="close-modal-button">X</p>
-            </div>
-            <form class="request-modal-form">
-                <label for="request-title">Title Your Request!</label>
-                <input type="text" class="modal-user-input" id="request-title" name="request-title">
-                <label for="request-category">Category</label>
-                <input type="text" class="modal-user-input" id="request-category" name="request-category">
-                <label for="request-category">Write a description!</label>
-                <input type="text" class="modal-user-input" id="request-description" name="request-description">
-                <button type="submit" id="submit-request-button">Submit</button> 
+    <hr>
+
+    <div class=user-menu>
+        <div class="search">
+            <form class="search-category">
+                <input class="user-input id=" search-category-input" type="text" placeholder="Search"
+                    name="search-category-input">
+                <button class="search-button" type="submit"><i class="fa fa-search">search</i></button>
             </form>
         </div>
-        
-        
-        <div class="card-container">
-        
+
+        <div class="request-button">
+            Make A Request!
         </div>
+    </div>
+
+    <div id="modal-page-mask"></div>
+    <div class="request-modal">
+        <div class="modal-top">
+            <p class="request-modal-title">Make your request!</p>
+            <p class="close-modal-button">X</p>
+        </div>
+        <form class="request-modal-form">
+            <label for="request-title">Title Your Request!</label>
+            <input type="text" class="modal-user-input" id="request-title" name="request-title" required />
+            <label for="request-category">Category</label>
+            <input type="text" class="modal-user-input" id="request-category" name="request-category" required />
+            <label for="request-category">Write a description!</label>
+            <input type="text" class="modal-user-input" id="request-description" name="request-description" required />
+            <button type="submit" id="submit-request-button">Submit</button>
+             <!-- <input type="button" value="okandclose" id="myButton" onclick='validateForm()' > -->
+        </form>
+    </div>
+
+    <button class= "Testing">Testing Buttons</button>
+    <div class="card-container">
+    
+    </div>
     
 </body>
+
 </html>

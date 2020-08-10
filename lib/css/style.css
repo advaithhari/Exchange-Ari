@@ -228,3 +228,24 @@ label {
     height:800px;
     flex-wrap: wrap;
 }
+
+.card {
+    width: 20%;
+    height: 40%;
+    background: linear-gradient(209.22deg, #C568FF -1.93%, #927D55 101.64%);
+    box-shadow: 10px 10px 4px 3px rgba(196, 123, 208, 0.25);
+    border-radius: 10px;
+    margin: 2% 5%;
+}
+
+.cardContent {
+padding-left:10%;
+}
+
+/* .card-title {
+padding-left: 10% ;
+}
+
+.card-description {
+    pading-left:10%;
+} */
