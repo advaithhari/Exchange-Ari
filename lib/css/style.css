@@ -115,7 +115,9 @@ a:hover {
 .user-menu {
     display: flex;
     justify-content: space-between;
-    margin: 2% 20%;
+    align-items: center;
+    margin: 2% 15%;
+    /* padding: 2%; */
     /* border: 1px solid black;  */
 }
 
@@ -126,7 +128,7 @@ a:hover {
  
 .request-button {
     font-family: Nunito;
-    width: 20%;
+    width: 40%;
     height: 15%;
     background: linear-gradient(268deg, #EDB241 0%, #B51EEA 97.59%);
     border-radius: 8px;
