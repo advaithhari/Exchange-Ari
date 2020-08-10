@@ -29,7 +29,14 @@ nav {
     justify-content: space-around;
     width: 18%;
 }
- 
+
+.navbar-nav {
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+    /* border: 1px solid white; */
+}
+
 .nav-button {
     font-family: Nunito;
     font-style: normal;
@@ -40,6 +47,8 @@ nav {
     color: #FFFFFF;
     text-decoration: none;
 }
+
+
  
 a:hover {
     text-decoration: none;
@@ -236,6 +245,7 @@ label {
 }
  
 .card {
+    position: static;
     width: 20%;
     height: 200px;
     /* background: linear-gradient(209.22deg, #ECAF44 -1.93%, #C23FC5 101.64%); */
@@ -286,7 +296,11 @@ label {
 }
 
 
-@media(max-width:700px) {
+@media(max-width:700px) {  
+
+    .nav-title {
+        font-size: 35px;
+    }
 
     body {
         display: flex;
