@@ -1,0 +1,49 @@
+body {
+    background-color:rgba(28, 29, 49);  
+    /* background: #313131 */
+}
+ 
+ 
+.nav-title {
+    font-family: 'Audiowide', cursive;
+    background: -webkit-linear-gradient(98deg,#FFC46C, #9328E8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+   font-size: 350%;
+}
+nav {
+    display: flex;
+    padding: 1%;
+    background: #202020;
+    align-items: center;
+    justify-content: space-between;
+}
+ 
+.nav-right {
+    display: flex;
+    justify-content: space-around;
+    width: 18%;
+}
+
+.navbar-nav {
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+    /* border: 1px solid white; */
+}
+
+.nav-button {
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 33px;
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+body{
+    text-align: center;
+    color:white;
+}

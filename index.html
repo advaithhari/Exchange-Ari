@@ -24,7 +24,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&family=Roboto&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="lib/css/glide.css">
+    <link rel="stylesheet" href="lib/css/glide.core.min.css">
+    
     
  
     <!-- Icons -->
@@ -34,7 +36,12 @@
     <script src="lib/js/script.js" defer></script>
     <script src="lib/js/requestModal.js" defer></script>
     <script src="lib/js/cards.js" defer></script>
+    <!-- <script src="lib/js/page.js" defer></script> -->
     <script src="lib/js/auth.js" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide" defer></script>
+    <script src="lib/js/glider.js" defer></script>
+
 </head>
  
 <body>
@@ -86,6 +93,20 @@
         </div>
     </section>
     <hr>
+
+    <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+            
+            <ul class="glide__slides">
+                <li class="glide__slide">0</li>
+                <li class="glide__slide">1</li>
+                <li class="glide__slide">2</li>
+            </ul>
+        </div>
+        <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+    </div>
  
     <div class=user-menu>
         <div class="search">
