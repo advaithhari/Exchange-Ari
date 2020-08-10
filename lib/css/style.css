@@ -1,12 +1,12 @@
 * {
     margin: 0;
 }
-
+ 
 body {
     background-color:#404040;  
 }
-
-
+ 
+ 
 .nav-title {
     font-family: 'Audiowide', cursive;
     background: -webkit-linear-gradient(98deg,#FFC46C, #9328E8);
@@ -14,7 +14,7 @@ body {
     -webkit-text-fill-color: transparent;
    font-size: 350%;
 }
-
+ 
 nav {
     display: flex;
     padding: 1%;
@@ -22,13 +22,13 @@ nav {
     align-items: center;
     justify-content: space-between;
 }
-
+ 
 .nav-right {
     display: flex;
     justify-content: space-around;
     width: 18%;
 }
-
+ 
 .nav-button {
     font-family: Nunito;
     font-style: normal;
@@ -39,24 +39,24 @@ nav {
     color: #FFFFFF;
     text-decoration: none;
 }
-
+ 
 a:hover {
     text-decoration: none;
     color: lightgray;
 }
-
+ 
 .top-section {
     display: flex;
     margin: 5% 5%; 
     align-content: center;
     justify-content: center;
 }
-
+ 
 .description {
     display: flex;
     flex-direction: column;
 }
-
+ 
 .phrase{
     font-family: Roboto;
     font-style: normal;
@@ -68,9 +68,9 @@ a:hover {
     width: 60%;
     margin-bottom: 2%;
 }
-
+ 
 .small-desc {
-
+ 
     font-family: Nunito;
     font-style: normal;
     font-weight: 200;
@@ -82,9 +82,9 @@ a:hover {
     width: 40%;
     color: #E9E9E9;
 }
-
+ 
 .crequests {
-
+ 
     width: 30%;
     margin-top: 5%;
     padding: 1%;
@@ -97,18 +97,18 @@ a:hover {
     letter-spacing: 0.05em;
     color: white;
 }
-
+ 
 .crequests:hover {
     cursor: pointer;
 }
-
+ 
 .user-menu {
     display: flex;
     justify-content: space-between;
     margin: 5% 25%;
-
+ 
 }
-
+ 
 .request-button {
     font-family: Nunito;
     width: 20%;
@@ -123,11 +123,11 @@ a:hover {
     letter-spacing: 0.05em;
     padding: 0.5%;
 }
-
+ 
 .request-button:hover {
     cursor: pointer;
 }
-
+ 
 #modal-page-mask {
     display: none;
     position: fixed;
@@ -137,7 +137,7 @@ a:hover {
     height: 100vh;
     background: rgba(0, 0, 0, 0.7)
 }
-
+ 
 .request-modal {
     pointer-events: none;
     font-family: Nunito;
@@ -153,7 +153,7 @@ a:hover {
     background: #313030;
     transition: all 300ms;
 }
-
+ 
 .modal-top {
     display: flex;
     justify-content: space-between;
@@ -162,7 +162,7 @@ a:hover {
     padding-bottom: 2%;
     border-bottom: 1px solid gray;
 }
-
+ 
 .request-modal-title {
     font-family: 'Nunito';
     background: -webkit-linear-gradient(98deg,#FFC46C, #9328E8);
@@ -170,23 +170,23 @@ a:hover {
     -webkit-text-fill-color: transparent;
     font-size: 36px;
 }
-
+ 
 .close-modal-button {
     color: gray;
     transition: all 300ms;
 }
-
+ 
 .close-modal-button:hover {
     cursor: pointer;
     color: white;
 }
-
+ 
 .request-modal-form {
     display: flex;
     flex-direction: column;
     margin: 2%;
 }
-
+ 
 label {
     font-family: Nunito;
     font-weight: 100;
@@ -195,7 +195,7 @@ label {
     margin: 1% 0;
     letter-spacing: 0.1em;
 }
-
+ 
 .modal-user-input {
     font-family: Roboto;
     color: white;
@@ -204,22 +204,22 @@ label {
     border-radius: 10px;
     border: none;
 }
-
+ 
 #request-title, #request-category {
     padding: 1%;
 }
-
+ 
 #request-description {
     padding: 1% 10% 10% 1%;
 }
-
+ 
 .modal-user-input:focus {
     outline: none;
     border: 1px solid #D77882;
     /* border-color: #D77882; */
-
+ 
 }
-
+ 
 .card-container {
     display: flex;
     flex-direction: row;
@@ -228,7 +228,7 @@ label {
     height:800px;
     flex-wrap: wrap;
 }
-
+ 
 .card {
     width: 20%;
     height: 40%;
@@ -237,15 +237,15 @@ label {
     border-radius: 10px;
     margin: 2% 5%;
 }
-
+ 
 .cardContent {
 padding-left:10%;
 }
-
+ 
 /* .card-title {
 padding-left: 10% ;
 }
-
+ 
 .card-description {
     pading-left:10%;
 } */
