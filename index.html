@@ -37,9 +37,7 @@
  
     <section class="top-section">
         <div class="description">
-            <div class="big-desc">
-                <p class="phrase">Request, Receive, Repeat. A New Way to Connect</p>
-            </div>
+             <p class="phrase">Request, Receive, Repeat. A New Way to Connect</p>
             <p class="small-desc">
                 Need anything? Ask away! Put in a request for anything - advice, a specific item, whatever you want!
             </p>
@@ -50,16 +48,16 @@
     <hr>
  
     <div class=user-menu>
+        <button class="request-button">Make A Request!</button>
         <div class="search">
             <form class="search-category">
-                <input class="user-input id=" search-category-input" type="text" placeholder="Search"
-                    name="search-category-input">
-                <button class="search-button" type="submit"><i class="fa fa-search">search</i></button>
+                <label for="search-category-input">Search By Category</label>
+                <div>
+                    <input class="user-input" id="search-category-input" type="text" name="search-category-input">
+                    <button class="search-button" type="submit"><i class="fa fa-search">search</i></button>
+                </div>
+                
             </form>
-        </div>
- 
-        <div class="request-button">
-            Make A Request!
         </div>
     </div>
  
@@ -71,17 +69,15 @@
         </div>
         <form class="request-modal-form">
             <label for="request-title">Title Your Request!</label>
-            <input type="text" class="modal-user-input" id="request-title" name="request-title" required />
+            <input type="text" class="user-input" id="request-title" name="request-title" required />
             <label for="request-category">Category</label>
-            <input type="text" class="modal-user-input" id="request-category" name="request-category" required />
+            <input type="text" class="user-input" id="request-category" name="request-category" required />
             <label for="request-category">Write a description!</label>
-            <input type="text" class="modal-user-input" id="request-description" name="request-description" required />
-            <button type="submit" id="submit-request-button">Submit</button>
-             <!-- <input type="button" value="okandclose" id="myButton" onclick='validateForm()' > -->
+            <input type="text" class="user-input" id="request-description" name="request-description" required />
+            <button type="submit" id="submit-request-button" class="crequests">Submit</button>
         </form>
     </div>
  
-    <button class= "Testing">Testing Buttons</button>
     <div class="card-container">
     
     </div>
