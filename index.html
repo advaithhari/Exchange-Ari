@@ -24,8 +24,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="lib/css/glide.css">
     <link rel="stylesheet" href="lib/css/glide.core.min.css">
+    <link rel="stylesheet" href="lib/css/glide.css">
     
     
  
@@ -77,11 +77,12 @@
         </div>
     </nav>
 
-    <div class="signs">
+    <!-- <div class="signs">
         <div class="g-signin2" data-onsuccess="onSignIn"></div>
         <a href="#" class="signOut" onclick="onSignOut();">Sign out</a>
     </div>
- 
+  -->
+    
     <section class="top-section">
         <div class="description">
              <p class="phrase">Request, Receive, Repeat. A New Way to Connect</p>
@@ -92,54 +93,88 @@
             <button class="crequests">See All Requests</button>
         </div>
     </section>
-    <hr>
 
-    <div class="glide">
-        <div class="glide__track" data-glide-el="track">
-            
-            <ul class="glide__slides">
-                <li class="glide__slide">0</li>
-                <li class="glide__slide">1</li>
-                <li class="glide__slide">2</li>
-            </ul>
+    <div class=main-container>
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                
+                <ul class="glide__slides">
+                    <li class="glide__slide">
+                        <div class="card">
+                            <div class="cardContent">
+                                <div class="card-title">Glider Test 1</div>
+                                <div class="card-category">Glider</div>
+                                <div class="card-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora officiis consequuntur ex vero nesciunt accusantium sunt animi sequi exercitationem atque, similique quod temporibus aliquid doloremque quos omnis blanditiis ipsam libero culpa molestiae magnam totam non, est cum! Aliquam, accusantium officiis.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="card">
+                            <div class="cardContent">
+                                <div class="card-title">Glider Test 2</div>
+                                <div class="card-category">Glider</div>
+                                <div class="card-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora officiis
+                                    consequuntur ex vero nesciunt accusantium sunt animi sequi exercitationem atque, similique quod temporibus
+                                    aliquid doloremque quos omnis blanditiis ipsam libero culpa molestiae magnam totam non, est cum! Aliquam,
+                                    accusantium officiis.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="card">
+                            <div class="cardContent">
+                                <div class="card-title">Glider Test 3</div>
+                                <div class="card-category">Glider</div>
+                                <div class="card-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora officiis
+                                    consequuntur ex vero nesciunt accusantium sunt animi sequi exercitationem atque, similique quod temporibus
+                                    aliquid doloremque quos omnis blanditiis ipsam libero culpa molestiae magnam totam non, est cum! Aliquam,
+                                    accusantium officiis.</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+            </div>
         </div>
-        <div class="glide__arrows" data-glide-el="controls">
-            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
-    </div>
- 
-    <div class=user-menu>
-        <div class="search">
-            <form class="search-category">
-                <label for="search-category-input">Search By Category</label>
-                <div>
-                    <input class="user-input" id="search-category-input" type="text" name="search-category-input">
-                    <button class="search-button" type="submit"><i class="fa fa-search">search</i></button>
-                </div>
+        
+        <hr>
+
+        <div class=user-menu>
+            <div class="search">
+                <form class="search-category">
+                    <label for="search-category-input">Search By Category</label>
+                    <div>
+                        <input class="user-input" id="search-category-input" type="text" name="search-category-input">
+                        <button class="search-button" type="submit"><i class="fa fa-search">search</i></button>
+                    </div>
+                </form>
+            </div>
+            <button class="request-button">Make A Request!</button>
+        </div>
+    
+        <div id="modal-page-mask"></div>
+        <div class="request-modal">
+            <div class="modal-top">
+                <p class="request-modal-title">Make your request!</p>
+                <p class="close-modal-button">X</p>
+            </div>
+            <form class="request-modal-form">
+                <label for="request-title">Title Your Request!</label>
+                <input type="text" class="user-input" id="request-title" name="request-title" required />
+                <label for="request-category">Category</label>
+                <input type="text" class="user-input" id="request-category" name="request-category" required />
+                <label for="request-category">Write a description!</label>
+                <input type="text" class="user-input" id="request-description" name="request-description" required />
+                <button type="submit" id="submit-request-button" class="crequests">Submit</button>
             </form>
         </div>
-        <button class="request-button">Make A Request!</button>
-    </div>
- 
-    <div id="modal-page-mask"></div>
-    <div class="request-modal">
-        <div class="modal-top">
-            <p class="request-modal-title">Make your request!</p>
-            <p class="close-modal-button">X</p>
-        </div>
-        <form class="request-modal-form">
-            <label for="request-title">Title Your Request!</label>
-            <input type="text" class="user-input" id="request-title" name="request-title" required />
-            <label for="request-category">Category</label>
-            <input type="text" class="user-input" id="request-category" name="request-category" required />
-            <label for="request-category">Write a description!</label>
-            <input type="text" class="user-input" id="request-description" name="request-description" required />
-            <button type="submit" id="submit-request-button" class="crequests">Submit</button>
-        </form>
-    </div>
- 
-    <div class="card-container">
     
+        <div class="card-container">
+        
+        </div>
     </div>
 
     <!-- Bootstrap -->

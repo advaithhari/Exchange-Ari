@@ -6,8 +6,12 @@ body {
     background-color:rgba(28, 29, 49);  
     /* background: #313131 */
 }
- 
- 
+
+hr {
+    border: 1px solid white;
+    margin: 5% 5%;
+}
+
 .nav-title {
     font-family: 'Audiowide', cursive;
     background: -webkit-linear-gradient(98deg,#FFC46C, #9328E8);
@@ -47,8 +51,6 @@ nav {
     color: #FFFFFF;
     text-decoration: none;
 }
-
-
  
 a:hover {
     text-decoration: none;
@@ -57,7 +59,7 @@ a:hover {
  
 .top-section {
     display: flex;
-    margin: 5% 5%; 
+    margin: 5% 2% 2% 2%; 
     align-content: center;
     justify-content: center;
 }
@@ -96,7 +98,7 @@ a:hover {
 .crequests {
  
     width: 30%;
-    margin-top: 5%;
+    margin-top: 2%;
     padding: 1%;
     background: linear-gradient(268deg, #EDB241 0%, #B51EEA 97.59%);
     border-radius: 8px;
@@ -113,7 +115,7 @@ a:hover {
     cursor: pointer;
     opacity: 0.6;
 }
- 
+
 .user-menu {
     display: flex;
     justify-content: space-between;
