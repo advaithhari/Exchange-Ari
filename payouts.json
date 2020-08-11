@@ -1,0 +1,2526 @@
+{
+    "info": {
+        "_postman_id": "2e6ac18d-176a-4dde-becc-c99d08109533",
+        "name": "PayPal REST API Simulation - Payouts",
+        "description": "The PayPal sandbox environment enables you to pass specific information in a request to trigger simulated positive and negative test scenarios. The simulated responses mimic actual API responses without calling downstream services. You can handle these responses in your code to manage your buyer\u2019s experience.\n\nThis collection provides 4 examples of different simulations. For a complete list of negative and positive simulations you can send, visit our [Test Payouts developer docs](https:\/\/developer.paypal.com\/docs\/payouts\/integrate\/test-payouts\/#show-payout).",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
+    },
+    "item": [{
+        "name": "Payouts REST API Simulation",
+        "item": [{
+            "name": "Step1:Get an access_token",
+            "item": [{
+                "name": "Step 1 - Get an access_token",
+                "event": [{
+                    "listen": "test",
+                    "script": {
+                        "type": "text\/javascript",
+                        "exec": ["var jsonData = JSON.parse(responseBody);", "postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);"]
+                    }
+                }],
+                "_postman_id": "8fb87546-3025-4c0d-acee-6a52d1c448bb",
+                "request": {
+                    "auth": {
+                        "type": "basic",
+                        "basic": {
+                            "username": "{{client_id}}",
+                            "password": "{{secret}}",
+                            "showPassword": false
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Accept-Language",
+                        "type": "text",
+                        "value": "en_US"
+                    }, {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application\/json"
+                    }, {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "type": "text",
+                        "value": "application\/x-www-form-urlencoded"
+                    }],
+                    "body": {
+                        "mode": "urlencoded",
+                        "urlencoded": [{
+                            "key": "grant_type",
+                            "value": "client_credentials",
+                            "type": "text"
+                        }]
+                    },
+                    "url": "{{host}}\/v1\/oauth2\/token",
+                    "description": "The PayPal REST API uses the OAuth 2.0 protocol to authorize calls. OAuth is an open standard that many companies use to provide secure access to protected resources. \n\nWhen you create a REST app in the PayPal Developer Dashboard, PayPal generates a set of OAuth <code>client_id<\/code> and <code>secret<\/code> credentials for your app for both the sandbox and live environments. In the Postman app, you pass these as username and password Basic Auth credentials in the Authorization tab of the <a href=\"https:\/\/developer.paypal.com\/docs\/api\/overview\/#make-your-first-call\" target=\"_blank\">GET access token request<\/a>. Postman will base64 encode the credentials for you and add the Basic Auth header to the request.\n\nIn exchange for these credentials, the PayPal authorization server issues a Bearer token, called <code>access_token<\/code>, that you use for authorization when you make REST API requests. The <code>access_token<\/code> enables you to complete actions on behalf and with the approval of the resource owner."
+                },
+                "response": [{
+                    "id": "2883189e-8cff-43b3-a66b-43fd06cc68ad",
+                    "name": "Get an access_token",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [{
+                            "key": "Accept-Language",
+                            "type": "text",
+                            "value": "en_US"
+                        }, {
+                            "key": "Accept",
+                            "type": "text",
+                            "value": "application\/json"
+                        }, {
+                            "key": "Content-Type",
+                            "name": "Content-Type",
+                            "type": "text",
+                            "value": "application\/x-www-form-urlencoded"
+                        }],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [{
+                                "key": "grant_type",
+                                "value": "client_credentials",
+                                "type": "text"
+                            }]
+                        },
+                        "url": "{{host}}\/v1\/oauth2\/token"
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [{
+                        "key": "Date",
+                        "value": "Mon, 26 Nov 2018 16:58:38 GMT"
+                    }, {
+                        "key": "Server",
+                        "value": "Apache"
+                    }, {
+                        "key": "paypal-debug-id",
+                        "value": "5f1cd661d8871"
+                    }, {
+                        "key": "X-PAYPAL-TOKEN-SERVICE",
+                        "value": "IAAS"
+                    }, {
+                        "key": "HTTP_X_PP_AZ_LOCATOR",
+                        "value": "sandbox.slc"
+                    }, {
+                        "key": "Paypal-Debug-Id",
+                        "value": "5f1cd661d8871"
+                    }, {
+                        "key": "Set-Cookie",
+                        "value": "X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D1042742363%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Mon, 26 Nov 2018 17:28:39 GMT; domain=.paypal.com; path=\/; Secure; HttpOnly"
+                    }, {
+                        "key": "Set-Cookie",
+                        "value": "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                    }, {
+                        "key": "Vary",
+                        "value": "Authorization"
+                    }, {
+                        "key": "Content-Length",
+                        "value": "710"
+                    }, {
+                        "key": "Connection",
+                        "value": "close"
+                    }, {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }],
+                    "cookie": [],
+                    "body": "{\n    \"scope\": \"https:\/\/uri.paypal.com\/services\/disputes\/read-seller https:\/\/uri.paypal.com\/services\/subscriptions https:\/\/api.paypal.com\/v1\/payments\/.* https:\/\/uri.paypal.com\/services\/disputes\/read-buyer https:\/\/api.paypal.com\/v1\/vault\/credit-card https:\/\/uri.paypal.com\/services\/applications\/webhooks openid https:\/\/uri.paypal.com\/payments\/payouts https:\/\/uri.paypal.com\/services\/disputes\/update-seller https:\/\/api.paypal.com\/v1\/vault\/credit-card\/.*\",\n    \"nonce\": \"2018-11-26T16:58:38ZVydyI9rkIcm4YjBJloZ4ijEnI7-6-xWUk590tbDNVtI\",\n    \"access_token\": \"B72EFHKYm4mlJGmFLGY34TJ4hdxpocNLTQGGle9E3UGhWZ0W61GmMmY5JS_vb9isvB01UH6M1ByanBmo3Cl4c6wlYQnjjzxdA\",\n    \"token_type\": \"Bearer\",\n    \"app_id\": \"APP-12W484485P519543T\",\n    \"expires_in\": 32399\n}"
+                }]
+            }],
+            "_postman_id": "a48ed2fd-519f-48e4-ac98-fce1a71358b1",
+            "protocolProfileBehavior": {},
+            "_postman_isSubFolder": true
+        }, {
+            "name": "Create Payout-Positive response test values",
+            "item": [{
+                "name": "Positive Scenario - POST",
+                "event": [{
+                    "listen": "test",
+                    "script": {
+                        "id": "99f9cfc9-26dc-4545-85ad-735ab22eee68",
+                        "exec": [""],
+                        "type": "text\/javascript"
+                    }
+                }],
+                "_postman_id": "c1e0cee9-c8e0-4866-b356-63d7a7bf628c",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }, {
+                        "warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+                        "key": "Authorization",
+                        "value": "Bearer  <your access_token>",
+                        "disabled": true
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is related to simulation\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"POSPYO001\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts",
+                    "description": "This is a positive simulation that uses the <code>POSPYO001<\/code> value and the JSON pointer method in the body of the request to simulate a positive payout creation payload with a 201 response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": [{
+                    "id": "53578081-e90a-4ca6-8eb9-2f035525fb55",
+                    "name": "Positive Scenario - POST",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [{
+                            "key": "Content-Type",
+                            "value": "application\/json"
+                        }, {
+                            "key": "Authorization",
+                            "value": "Bearer  <your access_token>"
+                        }],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is related to simulation\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"POSPYO001\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                        },
+                        "url": "https:\/\/api.sandbox.paypal.com\/v1\/payments\/payouts"
+                    },
+                    "status": "Created",
+                    "code": 201,
+                    "_postman_previewlanguage": "json",
+                    "header": [{
+                        "key": "Date",
+                        "value": "Fri, 07 Dec 2018 15:33:50 GMT"
+                    }, {
+                        "key": "Server",
+                        "value": "Apache"
+                    }, {
+                        "key": "paypal-debug-id",
+                        "value": "5161bf0dda9b"
+                    }, {
+                        "key": "HTTP_X_PP_AZ_LOCATOR",
+                        "value": "sandbox.slc"
+                    }, {
+                        "key": "Paypal-Debug-Id",
+                        "value": "5161bf0dda9b"
+                    }, {
+                        "key": "Set-Cookie",
+                        "value": "X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D3734112860%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Fri, 07 Dec 2018 16:03:50 GMT; domain=.paypal.com; path=\/; Secure; HttpOnly"
+                    }, {
+                        "key": "Set-Cookie",
+                        "value": "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                    }, {
+                        "key": "Vary",
+                        "value": "Authorization"
+                    }, {
+                        "key": "Content-Length",
+                        "value": "366"
+                    }, {
+                        "key": "Connection",
+                        "value": "close"
+                    }, {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }],
+                    "cookie": [],
+                    "body": "{\n    \"batch_header\": {\n        \"payout_batch_id\": \"83TEPJXBQJXZE\",\n        \"batch_status\": \"PENDING\",\n        \"sender_batch_header\": {\n            \"email_subject\": \"Test batch status\",\n            \"sender_batch_id\": \"API-15\"\n        }\n    },\n    \"links\": [\n        {\n            \"href\": \"https:\/\/api.sandbox.paypal.com\/v1\/payments\/payouts\/83TEPJXBQJXZE\",\n            \"rel\": \"self\",\n            \"method\": \"GET\"\n        }\n    ]\n}"
+                }]
+            }, {
+                "name": "Positive Scenario - Venmo POST",
+                "event": [{
+                    "listen": "test",
+                    "script": {
+                        "id": "3901273d-aef0-47ce-877c-536970b2889c",
+                        "exec": [""],
+                        "type": "text\/javascript"
+                    }
+                }],
+                "_postman_id": "6fef6ae9-7e6f-43aa-9ad9-bb0c1d6a0a4e",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }, {
+                        "key": "Authorization",
+                        "value": "Bearer <your_access_token>",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"API-35\",\n          \"email_subject\": \"Venmo simulation\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"PHONE\",\n               \"receiver\": \"6082391844\",\n               \"note\": \"POSPYO003\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}",
+                        "options": {
+                            "raw": {}
+                        }
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts",
+                    "description": "This is a positive simulation for Payouts to Venmo receivers that uses the <code>POSPYO003<\/code> value and the JSON pointer method in the body of the request to simulate a positive payout creation payload with a 201 response.\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }],
+            "_postman_id": "2932f819-9870-4f8d-9d11-f6827b06de46",
+            "protocolProfileBehavior": {},
+            "_postman_isSubFolder": true
+        }, {
+            "name": "Create Payouts-Negative response test values",
+            "item": [{
+                "name": "Error Scenario - POST - SENDER_RESTRICTED",
+                "_postman_id": "917e4b1e-3964-4106-a8a1-91978eb6d37c",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is for alternate scenario - ACCOUNT_UNCONFIRMED_EMAIL\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"ERRPYO001\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO001<\/code> value and the JSON pointer method in the body of the request to simulate a negative payout creation payload with a `SENDER_RESTRICTED` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - POST - SENDER_EMAIL_UNCONFIRMED",
+                "_postman_id": "33c31516-19f4-4341-8a14-e6e4726cc977",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is for alternate scenario - ACCOUNT_UNCONFIRMED_EMAIL\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"ERRPYO002\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO002<\/code> value and the JSON pointer method in the body of the request to simulate a negative payout creation payload with a `SENDER_EMAIL_UNCONFIRMED` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - POST - AUTHORIZATION_ERROR",
+                "_postman_id": "8d953b90-9870-4626-8367-cb3755961dd4",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is for alternate scenario - ACCOUNT_UNCONFIRMED_EMAIL\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"ERRPYO003\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO003<\/code> value and the JSON pointer method in the body of the request to simulate a negative payout creation payload with a `AUTHORIZATION_ERROR` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - POST - INSUFFICIENT_FUNDS",
+                "_postman_id": "96d8f02e-232a-4a2f-b2d8-2904feba89f8",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is for alternate scenario - ACCOUNT_UNCONFIRMED_EMAIL\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"ERRPYO005\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO005<\/code> value and the JSON pointer method in the body of the request to simulate a negative payout creation payload with a `INSUFFICIENT_FUNDS` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - POST - INTERNAL_ERROR",
+                "_postman_id": "737cc79f-f389-42d2-835d-a0d25271a0f2",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is for alternate scenario - ACCOUNT_UNCONFIRMED_EMAIL\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"ERRPYO006\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO006<\/code> value and the JSON pointer method in the body of the request to simulate a negative payout creation payload with a `INTERNAL_ERROR` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - POST - VALIDATION_ERROR",
+                "_postman_id": "1f7cb4b1-a641-4c6e-a957-ed357d28cfc5",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is for alternate scenario - ACCOUNT_UNCONFIRMED_EMAIL\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"ERRPYO010\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO010<\/code> value and the JSON pointer method in the body of the request to simulate a negative payout creation payload with a `VALIDATION_ERROR` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - POST- REQUIRED_SCOPE_MISSING",
+                "_postman_id": "f91168a2-23fe-497d-926c-f736cc23d963",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is for alternate scenario - ACCOUNT_UNCONFIRMED_EMAIL\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"ERRPYO011\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO011<\/code> value and the JSON pointer method in the body of the request to simulate a negative payout creation payload with a `REQUIRED_SCOPE_MISSING` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - POST - SENDER_LOCKED",
+                "_postman_id": "4ac2afb1-2dcd-40dc-a9f6-0789b5ce50e7",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is for alternate scenario - ACCOUNT_UNCONFIRMED_EMAIL\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"ERRPYO012\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO012<\/code> value and the JSON pointer method in the body of the request to simulate a negative payout creation payload with a `SENDER_LOCKED` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - POST - USER_BUSINESS_ERROR",
+                "_postman_id": "9b7108bc-9287-4660-95a9-ca9592896922",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is for alternate scenario - ACCOUNT_UNCONFIRMED_EMAIL\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"ERRPYO014\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO014<\/code> value and the JSON pointer method in the body of the request to simulate a negative payout creation payload with a `USER_BUSINESS_ERROR` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - RATE_LIMIT_VALIDATION",
+                "_postman_id": "cf2a8420-5827-475e-ac69-b1f4439cfc26",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is for alternate scenario - ACCOUNT_UNCONFIRMED_EMAIL\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"ERRPYO035\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO035<\/code> value and the JSON pointer method in the body of the request to simulate a negative payout creation payload with a `RATE_LIMIT_VALIDATION` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - REQUEST_TIMEOUT_EXCEEDED",
+                "_postman_id": "8f1ac27f-a405-4004-902c-0fe9b8810074",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is for alternate scenario - ACCOUNT_UNCONFIRMED_EMAIL\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"ERRPYO036\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO036<\/code> value and the JSON pointer method in the body of the request to simulate a negative payout creation payload with a `REQUEST_TIMEOUT_EXCEEDED` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - SYNC_MODE_NOT_APPLICABLE",
+                "_postman_id": "53927c73-87c5-47c6-888e-fd6408510031",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is for alternate scenario - ACCOUNT_UNCONFIRMED_EMAIL\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"ERRPYO037\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO037<\/code> value and the JSON pointer method in the body of the request to simulate a negative payout creation payload with a `SYNC_MODE_NOT_APPLICABLE` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - NON_HOLDING_CURRENCY",
+                "_postman_id": "f00b6064-b1d0-4a8b-b699-91496c0bdb63",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is for alternate scenario - ACCOUNT_UNCONFIRMED_EMAIL\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"ERRPYO038\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO038<\/code> value and the JSON pointer method in the body of the request to simulate a negative payout creation payload with a `NON_HOLDING_CURRENCY` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - PREVIOUS_REQUEST_IN_PROGRESS",
+                "_postman_id": "40bc20c9-6258-4b65-bfdd-a89323b326a0",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is for alternate scenario - ACCOUNT_UNCONFIRMED_EMAIL\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"ERRPYO039\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO039<\/code> value and the JSON pointer method in the body of the request to simulate a negative payout creation payload with a `PREVIOUS_REQUEST_IN_PROGRESS` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - CIP_NOT_VERIFIED",
+                "_postman_id": "110a35d3-93a0-420c-a65d-6e8cfd8a1c75",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is for alternate scenario - ACCOUNT_UNCONFIRMED_EMAIL\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"ERRPYO040\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO040<\/code> value and the JSON pointer method in the body of the request to simulate a negative payout creation payload with a `CIP_NOT_VERIFIED` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - POST - VALIDATION_ERROR Note Missing for Venmo receiver",
+                "_postman_id": "22d87442-3852-488b-963c-08a718f0e645",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }, {
+                        "warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+                        "key": "Authorization",
+                        "value": "Bearer <your_access_token>",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"ERRPYO013\",\n          \"email_subject\": \"Venmo simulation\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"PHONE\",\n               \"receiver\": \"6082391844\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO013<\/code> value and the JSON pointer method in the body of the request to simulate a negative payout creation payload with a VALIDATION_ERROR error response when note is missing for a venmo receiver.\nThe access_token value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }],
+            "_postman_id": "a66cd261-c5f2-4a97-a8a2-3a54c04a9622",
+            "protocolProfileBehavior": {},
+            "_postman_isSubFolder": true
+        }, {
+            "name": "Show Payouts-Positive response test values",
+            "item": [{
+                "name": "Positive Scenario - GET",
+                "_postman_id": "7219ca48-8aad-415b-85b5-0d5a9e025f4b",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }, {
+                        "key": "Authorization",
+                        "value": "Bearer <your access_token>",
+                        "warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+                        "disabled": true
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/POSPYO002",
+                    "description": "This is a positive simulation that uses the <code>POSPYO002<\/code> trigger value as a path parameter to simulate a payload with a 200 response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": [{
+                    "id": "0313d758-e05e-4b11-af3e-888756fabf8d",
+                    "name": "Positive Scenario - GET",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [{
+                            "key": "Content-Type",
+                            "value": "application\/json"
+                        }, {
+                            "warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+                            "key": "Authorization",
+                            "value": "Bearer <your access_token>"
+                        }],
+                        "url": "https:\/\/api.sandbox.paypal.com\/v1\/payments\/payouts\/POSPYO002"
+                    },
+                    "status": "Created",
+                    "code": 201,
+                    "_postman_previewlanguage": "json",
+                    "header": [{
+                        "key": "Date",
+                        "value": "Thu, 06 Dec 2018 23:22:12 GMT"
+                    }, {
+                        "key": "Server",
+                        "value": "Apache"
+                    }, {
+                        "key": "paypal-debug-id",
+                        "value": "9e943ae634b77"
+                    }, {
+                        "key": "HTTP_X_PP_AZ_LOCATOR",
+                        "value": "sandbox.slc"
+                    }, {
+                        "key": "Paypal-Debug-Id",
+                        "value": "9e943ae634b77"
+                    }, {
+                        "key": "Set-Cookie",
+                        "value": "X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D615450972%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Thu, 06 Dec 2018 23:52:12 GMT; domain=.paypal.com; path=\/; Secure; HttpOnly"
+                    }, {
+                        "key": "Set-Cookie",
+                        "value": "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                    }, {
+                        "key": "Vary",
+                        "value": "Authorization"
+                    }, {
+                        "key": "Content-Length",
+                        "value": "1465"
+                    }, {
+                        "key": "Connection",
+                        "value": "close"
+                    }, {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }],
+                    "cookie": [],
+                    "body": "{\n    \"batch_header\": {\n        \"payout_batch_id\": \"83TEPJXBQJXZE\",\n        \"batch_status\": \"SUCCESS\",\n        \"time_created\": \"2017-08-22T14:55:09Z\",\n        \"time_completed\": \"2017-08-22T14:55:35Z\",\n        \"sender_batch_header\": {\n            \"sender_batch_id\": \"API-15\",\n            \"email_subject\": \"Test batch status\"\n        },\n        \"amount\": {\n            \"currency\": \"USD\",\n            \"value\": \"25.8\"\n        },\n        \"fees\": {\n            \"currency\": \"USD\",\n            \"value\": \"0.25\"\n        }\n    },\n    \"items\": [\n        {\n            \"payout_item_id\": \"4E3JKYRYWRJGS\",\n            \"transaction_id\": \"1TG05351YN272080Y\",\n            \"transaction_status\": \"SUCCESS\",\n            \"payout_item_fee\": {\n                \"currency\": \"USD\",\n                \"value\": \"0.25\"\n            },\n            \"payout_batch_id\": \"83TEPJXBQJXZE\",\n            \"payout_item\": {\n                \"recipient_type\": \"EMAIL\",\n                \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"25.8\"\n                },\n                \"note\": \"payout to  receiver test1\",\n                \"receiver\": \"user-us@paypal.com\",\n                \"sender_item_id\": \"ID-30\"\n            },\n            \"time_processed\": \"2017-08-22T14:55:31Z\",\n            \"links\": [\n                {\n                    \"href\": \"https:\/\/api.sandbox.paypal.com\/v1\/payments\/payouts-item\/4E3JKYRYWRJGS\",\n                    \"rel\": \"item\",\n                    \"method\": \"GET\",\n                    \"encType\": \"application\/json\"\n                }\n            ]\n        }\n    ],\n    \"links\": [\n        {\n            \"href\": \"https:\/\/api.sandbox.paypal.com\/v1\/payments\/payouts\/83TEPJXBQJXZE\",\n            \"rel\": \"self\",\n            \"method\": \"GET\",\n            \"encType\": \"application\/json\"\n        }\n    ]\n}"
+                }]
+            }],
+            "_postman_id": "906bf4f8-545e-4f83-9949-05af456a02fd",
+            "protocolProfileBehavior": {},
+            "_postman_isSubFolder": true
+        }, {
+            "name": "Show Payouts - Negative response test values",
+            "item": [{
+                "name": "Error Scenario - GET - CLOSED_MARKET",
+                "_postman_id": "508cb224-9cbc-42a5-9202-5c1afa093746",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }, {
+                        "key": "Authorization",
+                        "value": "Bearer  <your access_token>",
+                        "warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+                        "disabled": true
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO015",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO015<\/code> trigger value as a path parameter to simulate a negative payload with a `CLOSED_MARKET` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": [{
+                    "id": "ab3f2364-2bf1-4102-8c6c-1599765a7457",
+                    "name": "Error Scenario - GET - Closed Market",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [{
+                            "key": "Content-Type",
+                            "value": "application\/json"
+                        }, {
+                            "key": "Authorization",
+                            "value": "Bearer  <your access_token>"
+                        }],
+                        "url": "https:\/\/api.sandbox.paypal.com\/v1\/payments\/payouts\/ERRPYO015"
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [{
+                        "key": "Date",
+                        "value": "Fri, 07 Dec 2018 15:34:42 GMT"
+                    }, {
+                        "key": "Server",
+                        "value": "Apache"
+                    }, {
+                        "key": "paypal-debug-id",
+                        "value": "d4a1d39c5d2e3"
+                    }, {
+                        "key": "HTTP_X_PP_AZ_LOCATOR",
+                        "value": "sandbox.slc"
+                    }, {
+                        "key": "Paypal-Debug-Id",
+                        "value": "d4a1d39c5d2e3"
+                    }, {
+                        "key": "Set-Cookie",
+                        "value": "X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D311626332%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Fri, 07 Dec 2018 16:04:42 GMT; domain=.paypal.com; path=\/; Secure; HttpOnly"
+                    }, {
+                        "key": "Set-Cookie",
+                        "value": "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                    }, {
+                        "key": "Vary",
+                        "value": "Authorization"
+                    }, {
+                        "key": "Content-Length",
+                        "value": "1646"
+                    }, {
+                        "key": "Connection",
+                        "value": "close"
+                    }, {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }],
+                    "cookie": [],
+                    "body": "{\n    \"batch_header\": {\n        \"payout_batch_id\": \"DQCP2UAJCBMNY\",\n        \"batch_status\": \"SUCCESS\",\n        \"time_created\": \"2017-08-21T11:22:33Z\",\n        \"time_completed\": \"2017-08-21T11:22:54Z\",\n        \"sender_batch_header\": {\n            \"email_subject\": \"user test case\"\n        },\n        \"amount\": {\n            \"currency\": \"USD\",\n            \"value\": \"190.0\"\n        },\n        \"fees\": {\n            \"currency\": \"USD\",\n            \"value\": \"0.0\"\n        }\n    },\n    \"items\": [\n        {\n            \"payout_item_id\": \"RWD4Y3H9VV8BA\",\n            \"transaction_status\": \"FAILED\",\n            \"payout_item_fee\": {\n                \"currency\": \"USD\",\n                \"value\": \"0.0\"\n            },\n            \"payout_batch_id\": \"DQCP2UAJCBMNY\",\n            \"payout_item\": {\n                \"recipient_type\": \"EMAIL\",\n                \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"190.0\"\n                },\n                \"note\": \"payout to  receiver\",\n                \"receiver\": \"vnaga-cn@paypal.com\",\n                \"sender_item_id\": \"MSI-2727\"\n            },\n            \"time_processed\": \"2017-08-21T11:22:44Z\",\n            \"errors\": {\n                \"name\": \"CLOSED_MARKET\",\n                \"message\": \"Market closed and transaction is between 2 different countries\",\n                \"information_link\": \"https:\/\/developer.paypal.com\/docs\/api\/payments.payouts-batch\/#errors\",\n                \"details\": []\n            },\n            \"links\": [\n                {\n                    \"href\": \"https:\/\/api.sandbox.paypal.com\/v1\/payments\/payouts-item\/RWD4Y3H9VV8BA\",\n                    \"rel\": \"item\",\n                    \"method\": \"GET\",\n                    \"encType\": \"application\/json\"\n                }\n            ]\n        }\n    ],\n    \"links\": [\n        {\n            \"href\": \"https:\/\/api.sandbox.paypal.com\/v1\/payments\/payouts\/DQCP2UAJCBMNY\",\n            \"rel\": \"self\",\n            \"method\": \"GET\",\n            \"encType\": \"application\/json\"\n        }\n    ]\n}"
+                }]
+            }, {
+                "name": "Error Scenario - GET - CURRENCY_COMPLIANCE",
+                "_postman_id": "a70ac511-4fe6-48ff-a132-5973504dccb8",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO016",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO016<\/code> trigger value as a path parameter to simulate a negative payload with a `CURRENCY_COMPLIANCE` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - CURRENCY_NOT_SUPPORTED_FOR_RECEIVER",
+                "_postman_id": "724cb053-b8df-4a8b-bd37-a7b955f972a2",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO017",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO017<\/code> trigger value as a path parameter to simulate a negative payload with a `CURRENCY_NOT_SUPPORTED_FOR_RECEIVER` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - DUPLICATE_ITEM",
+                "_postman_id": "6b1c9c86-8bd4-4ee3-b400-29b031537560",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO018",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO018<\/code> trigger value as a path parameter to simulate a negative payload with a `DUPLICATE_ITEM` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - RECEIVER_ACCOUNT_LOCKED",
+                "_postman_id": "28c9370f-7349-47ff-828c-ac4d25361148",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO019",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO019<\/code> trigger value as a path parameter to simulate a negative payload with a `RECEIVER_ACCOUNT_LOCKED` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario  - GET - RECEIVER_COUNTRY_NOT_ALLOWED",
+                "_postman_id": "f0f5beac-9c78-4b7a-8e66-6c72ea80767c",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO020",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO020<\/code> trigger value as a path parameter to simulate a negative payload with a `RECEIVER_COUNTRY_NOT_ALLOWED` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET- RECEIVER_UNCONFIRMED",
+                "_postman_id": "2ce1da84-ceb8-4413-8e28-a62ce4363607",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO021",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO021<\/code> trigger value as a path parameter to simulate a negative payload with a `RECEIVER_UNCONFIRMED` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - RECEIVER_UNREGISTERED",
+                "_postman_id": "471a70bc-e027-4e85-a57d-7db6ff051147",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO022",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO022<\/code> trigger value as a path parameter to simulate a negative payload with a `RECEIVER_UNREGISTERED` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - RECEIVER_YOUTH_ACCOUNT",
+                "_postman_id": "6407f98c-b856-4258-87f5-1206f9ed27a9",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO023",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO023<\/code> trigger value as a path parameter to simulate a negative payload with a `RECEIVER_YOUTH_ACCOUNT` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - RECEIVING_LIMIT_EXCEEDED",
+                "_postman_id": "97d06b15-8126-4dba-aa72-9d87ac291425",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO024",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO024<\/code> trigger value as a path parameter to simulate a negative payload with a `RECEIVING_LIMIT_EXCEEDED` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario -  GET - REGULATORY_BLOCKED",
+                "_postman_id": "19beb9ce-c1b0-40d8-a732-c109a1d816f9",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO025",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO025<\/code> trigger value as a path parameter to simulate a negative payload with a `REGULATORY_BLOCKED` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario -  GET- REGULATORY_PENDING",
+                "_postman_id": "0e0d6e49-b1af-4999-b9fe-446dec938d80",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO026",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO026<\/code> trigger value as a path parameter to simulate a negative payload with a `REGULATORY_PENDING` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - RISK_DECLINE",
+                "_postman_id": "1929e989-672d-47fb-a6f7-9d62a3350a29",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO027",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO027<\/code> trigger value as a path parameter to simulate a negative payload with a `RISK_DECLINE` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - SELF_PAY_NOT_ALLOWED",
+                "_postman_id": "73cb962d-b831-4dd3-a227-7e84c8add9f8",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO028",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO028<\/code> trigger value as a path parameter to simulate a negative payload with a `SELF_PAY_NOT_ALLOWED` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - TRANSACTION_LIMIT_EXCEEDED",
+                "_postman_id": "3594d427-4016-4467-9363-576695e806d6",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO029",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO029<\/code> trigger value as a path parameter to simulate a negative payload with a `TRANSACTION_LIMIT_EXCEEDED` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - UNDEFINED",
+                "_postman_id": "febe92b6-ebb9-40bd-af48-c47abee59d05",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO030",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO030<\/code> trigger value as a path parameter to simulate a negative payload with a `UNDEFINED` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - ZERO_AMOUNT",
+                "_postman_id": "9c235797-056a-45cd-93d9-620e20896468",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO031",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO031<\/code> trigger value as a path parameter to simulate a negative payload with a `ZERO_AMOUNT` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - INVALID_RESOURCE_ID",
+                "_postman_id": "b944974e-2e57-481a-a5dd-d120a097bb69",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO032",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO032<\/code> trigger value as a path parameter to simulate a negative payload with a `INVALID_RESOURCE_ID` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - INTERNAL_ERROR",
+                "_postman_id": "8554bd44-249f-43ac-8de4-98a5ae44d6c5",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO033",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO033<\/code> trigger value as a path parameter to simulate a negative payload with a `INTERNAL_ERROR` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - INVALID_EMAIL",
+                "_postman_id": "d6638f9f-1066-4431-8dcd-c3510d9a7df5",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO034",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO034<\/code> trigger value as a path parameter to simulate a negative payload with a `INVALID_EMAIL` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - ACCOUNT_RESTRICTED",
+                "_postman_id": "9c585e7f-83e4-422d-982f-160c76939b63",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYOB005",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB005<\/code> trigger value as a path parameter to simulate a negative payload with a `ACCOUNT_RESTRICTED` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - ACCOUNT_UNCONFIRMED_EMAIL",
+                "_postman_id": "a59e5a9e-f658-4ac5-a6ff-faaaeda35bbc",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYOB006",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB006<\/code> trigger value as a path parameter to simulate a negative payload with a `ACCOUNT_UNCONFIRMED_EMAIL` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - APPROVER_DENIED",
+                "_postman_id": "90ce7b5c-ce1a-4aed-acfd-274ac6ccf7b6",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYOB007",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB007<\/code> trigger value as a path parameter to simulate a negative payload with a `APPROVER_DENIED` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - GAMER_FAILED_COUNTRY_OF_RESIDENCE_CHECK",
+                "_postman_id": "c48d258c-6fac-4a64-850e-911da4d179c6",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYOB008",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB008<\/code> trigger value as a path parameter to simulate a negative payload with a `GAMER_FAILED_COUNTRY_OF_RESIDENCE_CHECK` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - GAMER_FAILED_FUNDING_SOURCE_CHECK",
+                "_postman_id": "0de0c953-9255-4836-a20e-f75146284bed",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYOB009",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB009<\/code> trigger value as a path parameter to simulate a negative payload with a `GAMER_FAILED_FUNDING_SOURCE_CHECK` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - GAMING_INVALID_PAYMENT_FLOW",
+                "_postman_id": "dc2f9318-7dbc-4e54-9894-5a6a114c9f98",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYOB010",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB010<\/code> trigger value as a path parameter to simulate a negative payload with a `GAMING_INVALID_PAYMENT_FLOW` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - NON_HOLDING_CURRENCY",
+                "_postman_id": "29221194-6d2c-470e-82be-12c157833e93",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYOB011",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB011<\/code> trigger value as a path parameter to simulate a negative payload with a `NON_HOLDING_CURRENCY` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - PENDING_RECIPIENT_NON_HOLDING_CURRENCY_PAYMENT_PREFERENCE",
+                "_postman_id": "ccdf05c8-0398-4488-bca1-0966af926c18",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYOB012",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB012<\/code> trigger value as a path parameter to simulate a negative payload with a `PENDING_RECIPIENT_NON_HOLDING_CURRENCY_PAYMENT_PREFERENCE` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - SPENDING_LIMIT_EXCEEDED",
+                "_postman_id": "669a4b03-4651-413c-bc02-c4e7168d8b4b",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYOB014",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB014<\/code> trigger value as a path parameter to simulate a negative payload with a `SPENDING_LIMIT_EXCEEDED` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - TRANSACTION_DECLINED_BY_TRAVEL_RULE",
+                "_postman_id": "8af21a40-6660-4fc3-b938-5b8dfb5a692b",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYOB015",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB015<\/code> trigger value as a path parameter to simulate a negative payload with a `TRANSACTION_DECLINED_BY_TRAVEL_RULE` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - SENDER_STATE_RESTRICTED",
+                "_postman_id": "36598802-41ad-4e5f-a970-d9a8b98b1088",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYOB013",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB013<\/code> trigger value as a path parameter to simulate a negative payload with a `SENDER_STATE_RESTRICTED` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - RECEIVER_ACCOUNT_LIMITATION",
+                "_postman_id": "47b41302-1106-4c3d-a3d6-dd9827987f3b",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Authorization",
+                        "value": "Bearer <your_access_token>",
+                        "type": "text"
+                    }, {
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYO060",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO060<\/code> trigger value as a path parameter to simulate a negative payload with a `RECEIVER_ACCOUNT_LIMITATION` error response. \nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }],
+            "_postman_id": "bda91b15-ef8e-49b5-b61c-731a610f3d36",
+            "protocolProfileBehavior": {},
+            "_postman_isSubFolder": true
+        }, {
+            "name": "Payouts Batch processing",
+            "item": [{
+                "name": "Error Scenario - GET - SUCCESS",
+                "_postman_id": "a61210cd-db09-40ff-9fe8-4ee24f094794",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYOB001",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB001<\/code> trigger value as a path parameter to simulate a negative payload with a `SUCCESS` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - PENDING",
+                "_postman_id": "1f1eb8c4-7806-4002-823a-7bd5463b0549",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYOB002",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB002<\/code> trigger value as a path parameter to simulate a negative payload with a `PENDING` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - PROCESSING",
+                "_postman_id": "f8debc3d-22c3-40a8-aa3c-0e5746259636",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYOB003",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB003<\/code> trigger value as a path parameter to simulate a negative payload with a `PROCESSING` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - DENIED",
+                "_postman_id": "a7f987a1-86b7-4296-970d-c9221fab3801",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts\/ERRPYOB004",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB004<\/code> trigger value as a path parameter to simulate a negative payload with a `DENIED` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }],
+            "_postman_id": "9d9a0432-0972-43dd-b6d8-ee6da90f846d",
+            "protocolProfileBehavior": {},
+            "_postman_isSubFolder": true
+        }, {
+            "name": "Cancel Payout item-Negative response test value",
+            "item": [{
+                "name": "Error Scenario - POST - ITEM_INCORRECT_STATUS",
+                "_postman_id": "dbaa862f-4dc4-4c4d-9784-61f2d9f85728",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is for alternate scenario - ACCOUNT_UNCONFIRMED_EMAIL\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"ERRPYO009\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO009\/cancel",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO009<\/code> value as a path parameter to simulate a negative payout creation payload with a `ITEM_INCORRECT_STATUS` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - POST -INVALID_RESOURCE_ID",
+                "_postman_id": "cff938dd-8141-48d7-83e2-34125f1dd741",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPOI001\/cancel",
+                    "description": "This is a negative simulation that uses the <code>ERRPOI001<\/code> value as a path parameter to simulate a negative payout creation payload with a `INVALID_RESOURCE_ID` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - POST - BATCH_NOT_COMPLETED",
+                "_postman_id": "bfd008f7-d2de-44c1-b890-640fd9ec6d3c",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": ""
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO004\/cancel",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO004<\/code> value and the JSON pointer method in the body of the request to simulate a negative payout creation payload with a `BATCH_NOT_COMPLETED` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - POST - ITEM_ALREADY_CANCELLED",
+                "_postman_id": "86ab912e-c344-4f11-8444-1323206777ce",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is for alternate scenario - ACCOUNT_UNCONFIRMED_EMAIL\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"ERRPYO007\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO007\/cancel",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO007<\/code> value and the JSON pointer method in the body of the request to simulate a negative payout creation payload with a `ITEM_ALREADY_CANCELLED` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - POST - ITEM_CANCELLATION_FAILED",
+                "_postman_id": "57ddc144-6ea8-4560-aac3-7d530f60141b",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\n     \"sender_batch_header\": {\n          \"sender_batch_id\": \"1524086406556\",\n          \"email_subject\": \"This email is for alternate scenario - ACCOUNT_UNCONFIRMED_EMAIL\"\n     },\n     \"items\": [\n          {\n               \"recipient_type\": \"EMAIL\",\n               \"receiver\": \"payouts-simulator-receiver@paypal.com\",\n               \"note\": \"ERRPYO008\",\n               \"sender_item_id\": \"15240864065560\",\n               \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"1.00\"\n               }\n          }\n     ]\n}"
+                    },
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO008\/cancel",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO008<\/code> value as a path parameter to simulate a negative payout creation payload with a `ITEM_CANCELLATION_FAILED` error response.\n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }],
+            "_postman_id": "88d0f3fa-9b96-440d-a76e-f10a801f73cb",
+            "protocolProfileBehavior": {},
+            "_postman_isSubFolder": true
+        }, {
+            "name": "Show Payout item-Negative response test values",
+            "item": [{
+                "name": "Error Scenario (Batch) - ACCOUNT_RESTRICTED",
+                "_postman_id": "a04b3c16-f6d1-4c33-99ff-3cf88d6ae388",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYOB016",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB016<\/code> trigger value as a path parameter to simulate a negative payload with a `ACCOUNT_RESTRICTED` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - ACCOUNT_UNCONFIRMED_EMAIL",
+                "_postman_id": "bd718215-a510-4c24-badb-b39ed924444f",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYOB017",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB017<\/code> trigger value as a path parameter to simulate a negative payload with a `ACCOUNT_UNCONFIRMED_EMAIL` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - APPROVER_DENIED",
+                "_postman_id": "9cda928c-a814-4601-a0d1-7d44c9fbb2bd",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYOB018",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB018<\/code> trigger value as a path parameter to simulate a negative payload with a `APPROVER_DENIED` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - TRANSACTION_DECLINED_BY_TRAVEL_RULE",
+                "_postman_id": "dcd28ff6-ba7c-4f81-b4bb-67599853dcc3",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYOB026",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB026<\/code> trigger value as a path parameter to simulate a negative payload with a `TRANSACTION_DECLINED_BY_TRAVEL_RULE` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - SPENDING_LIMIT_EXCEEDED",
+                "_postman_id": "953ca868-3448-4b60-bfad-07fd6151c20a",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYOB025",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB025<\/code> trigger value as a path parameter to simulate a negative payload with a `SPENDING_LIMIT_EXCEEDED` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - SENDER_STATE_RESTRICTED",
+                "_postman_id": "d14c1460-60a5-4162-9e50-ce3d4dac0977",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYOB024",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB024<\/code> trigger value as a path parameter to simulate a negative payload with a `SENDER_STATE_RESTRICTED` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - PENDING_RECIPIENT_NON_HOLDING_CURRENCY_PAYMENT_PREFERENCE",
+                "_postman_id": "d59325e4-ad8c-45fe-865d-1f74cfda4dc6",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYOB023",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB023<\/code> trigger value as a path parameter to simulate a negative payload with a `PENDING_RECIPIENT_NON_HOLDING_CURRENCY_PAYMENT_PREFERENCE` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - NON_HOLDING_CURRENCY",
+                "_postman_id": "8ab327e9-2942-4c0f-b2ed-af05622b2e68",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYOB022",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB022<\/code> trigger value as a path parameter to simulate a negative payload with a `NON_HOLDING_CURRENCY` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - GAMING_INVALID_PAYMENT_FLOW",
+                "_postman_id": "75cd0ff8-f280-4787-b672-174fbb34d7d6",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYOB021",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB021<\/code> trigger value as a path parameter to simulate a negative payload with a `GAMING_INVALID_PAYMENT_FLOW` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - GAMER_FAILED_FUNDING_SOURCE_CHECK",
+                "_postman_id": "a1e75d89-36ba-4fbc-8df4-0d037288e4b4",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYOB020",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB020<\/code> trigger value as a path parameter to simulate a negative payload with a `GAMER_FAILED_FUNDING_SOURCE_CHECK` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario (Batch) - GAMER_FAILED_COUNTRY_OF_RESIDENCE_CHECK",
+                "_postman_id": "c044f809-9117-4d2c-95a0-fbd30fd1a2d7",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYOB019",
+                    "description": "This is a negative simulation that uses the <code>ERRPYOB019<\/code> trigger value as a path parameter to simulate a negative payload with a `GAMER_FAILED_COUNTRY_OF_RESIDENCE_CHECK` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario -  GET- REGULATORY_PENDING",
+                "_postman_id": "dafda6f1-6504-47c1-a084-94c8d0966ebb",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO051",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO051<\/code> trigger value as a path parameter to simulate a negative payload with a `REGULATORY_PENDING` error response for payouts-item. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - RISK_DECLINE",
+                "_postman_id": "8075a241-ea2c-489d-b397-50e92893eb55",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO052",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO052<\/code> trigger value as a path parameter to simulate a negative payload with a `RISK_DECLINE` error response for payouts-item. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - SELF_PAY_NOT_ALLOWED",
+                "_postman_id": "3a2a8cf5-077c-4394-9970-8413e4817160",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO053",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO053<\/code> trigger value as a path parameter to simulate a negative payload with a `SELF_PAY_NOT_ALLOWED` error response for payouts-item. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - TRANSACTION_LIMIT_EXCEEDED",
+                "_postman_id": "7bd1406e-5cab-4342-a3c6-f8ca1e6f51d0",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO054",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO054<\/code> trigger value as a path parameter to simulate a negative payload with a `TRANSACTION_LIMIT_EXCEEDED` error response for payouts-item. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - UNDEFINED",
+                "_postman_id": "9c6a04bc-ffee-41e5-8be1-a554c2b09c2b",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO055",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO055<\/code> trigger value as a path parameter to simulate a negative payload with a `UNDEFINED` error response for payouts-item. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - ZERO_AMOUNT",
+                "_postman_id": "e4c61bc3-e465-4696-8698-2e409c4772db",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO056",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO056<\/code> trigger value as a path parameter to simulate a negative payload with a `ZERO_AMOUNT` error response for payouts-item. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario -  GET - REGULATORY_BLOCKED",
+                "_postman_id": "3f38ba14-f1b2-4aad-b245-62bcb8a5996d",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO050",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO050<\/code> trigger value as a path parameter to simulate a negative payload with a `REGULATORY_BLOCKED` error response for payouts-item. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - RECEIVER_YOUTH_ACCOUNT",
+                "_postman_id": "67bac1d7-0047-492f-b1b8-74e3352f76a9",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO048",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO048<\/code> trigger value as a path parameter to simulate a negative payload with a `RECEIVER_YOUTH_ACCOUNT` error response for payouts-item. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - RECEIVING_LIMIT_EXCEEDED",
+                "_postman_id": "1a891b9b-377f-410c-8138-8645946cd5aa",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO049",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO049<\/code> trigger value as a path parameter to simulate a negative payload with a `RECEIVING_LIMIT_EXCEEDED` error response for payouts-item. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET- RECEIVER_UNCONFIRMED",
+                "_postman_id": "648cc44c-5feb-4281-a483-12dea06f9e2f",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO046",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO046<\/code> trigger value as a path parameter to simulate a negative payload with a `RECEIVER_UNCONFIRMED` error response for payouts-item. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - RECEIVER_UNREGISTERED",
+                "_postman_id": "3a09c934-eb5d-43cb-8c2f-d6a51aae7452",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO047",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO047<\/code> trigger value as a path parameter to simulate a negative payload with a `RECEIVER_UNREGISTERED` error response for payouts-item. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario  - GET - RECEIVER_COUNTRY_NOT_ALLOWED",
+                "_postman_id": "aae5d374-ed2e-4541-b75b-895a3566e5bd",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO045",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO045<\/code> trigger value as a path parameter to simulate a negative payload with a `RECEIVER_COUNTRY_NOT_ALLOWED` error response for payouts-item. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - RECEIVER_ACCOUNT_LOCKED",
+                "_postman_id": "725e894d-3306-4121-a5ae-9fe2b5faa609",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO044",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO044<\/code> trigger value as a path parameter to simulate a negative payload with a `RECEIVER_ACCOUNT_LOCKED` error response for payouts-item. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - CURRENCY_NOT_SUPPORTED_FOR_RECEIVER",
+                "_postman_id": "b052a061-a8e6-4f2d-9588-1afdd2a02b99",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO043",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO043<\/code> trigger value as a path parameter to simulate a negative payload with a `CURRENCY_NOT_SUPPORTED_FOR_RECEIVER` error response for payouts-item. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - CURRENCY_COMPLIANCE",
+                "_postman_id": "bb6282a7-1f0b-4a54-936e-d86de3b28d31",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO042",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO042<\/code> trigger value as a path parameter to simulate a negative payload with a `CURRENCY_COMPLIANCE` error response for payouts-item. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - CLOSED_MARKET",
+                "_postman_id": "87440e0a-5c07-4599-8d9c-2d0bbb0e4836",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }, {
+                        "key": "Authorization",
+                        "value": "Bearer  <your access_token>",
+                        "warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+                        "disabled": true
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO041",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO041<\/code> trigger value as a path parameter to simulate a negative payload with a `CLOSED_MARKET` error response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": [{
+                    "id": "568529f1-8614-453f-a1f9-753bb12c03fa",
+                    "name": "Error Scenario - GET - Closed Market",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [{
+                            "key": "Content-Type",
+                            "value": "application\/json"
+                        }, {
+                            "key": "Authorization",
+                            "value": "Bearer  <your access_token>"
+                        }],
+                        "url": "https:\/\/api.sandbox.paypal.com\/v1\/payments\/payouts\/ERRPYO015"
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [{
+                        "key": "Date",
+                        "value": "Fri, 07 Dec 2018 15:34:42 GMT"
+                    }, {
+                        "key": "Server",
+                        "value": "Apache"
+                    }, {
+                        "key": "paypal-debug-id",
+                        "value": "d4a1d39c5d2e3"
+                    }, {
+                        "key": "HTTP_X_PP_AZ_LOCATOR",
+                        "value": "sandbox.slc"
+                    }, {
+                        "key": "Paypal-Debug-Id",
+                        "value": "d4a1d39c5d2e3"
+                    }, {
+                        "key": "Set-Cookie",
+                        "value": "X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D311626332%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Fri, 07 Dec 2018 16:04:42 GMT; domain=.paypal.com; path=\/; Secure; HttpOnly"
+                    }, {
+                        "key": "Set-Cookie",
+                        "value": "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                    }, {
+                        "key": "Vary",
+                        "value": "Authorization"
+                    }, {
+                        "key": "Content-Length",
+                        "value": "1646"
+                    }, {
+                        "key": "Connection",
+                        "value": "close"
+                    }, {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }],
+                    "cookie": [],
+                    "body": "{\n    \"batch_header\": {\n        \"payout_batch_id\": \"DQCP2UAJCBMNY\",\n        \"batch_status\": \"SUCCESS\",\n        \"time_created\": \"2017-08-21T11:22:33Z\",\n        \"time_completed\": \"2017-08-21T11:22:54Z\",\n        \"sender_batch_header\": {\n            \"email_subject\": \"user test case\"\n        },\n        \"amount\": {\n            \"currency\": \"USD\",\n            \"value\": \"190.0\"\n        },\n        \"fees\": {\n            \"currency\": \"USD\",\n            \"value\": \"0.0\"\n        }\n    },\n    \"items\": [\n        {\n            \"payout_item_id\": \"RWD4Y3H9VV8BA\",\n            \"transaction_status\": \"FAILED\",\n            \"payout_item_fee\": {\n                \"currency\": \"USD\",\n                \"value\": \"0.0\"\n            },\n            \"payout_batch_id\": \"DQCP2UAJCBMNY\",\n            \"payout_item\": {\n                \"recipient_type\": \"EMAIL\",\n                \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"190.0\"\n                },\n                \"note\": \"payout to  receiver\",\n                \"receiver\": \"vnaga-cn@paypal.com\",\n                \"sender_item_id\": \"MSI-2727\"\n            },\n            \"time_processed\": \"2017-08-21T11:22:44Z\",\n            \"errors\": {\n                \"name\": \"CLOSED_MARKET\",\n                \"message\": \"Market closed and transaction is between 2 different countries\",\n                \"information_link\": \"https:\/\/developer.paypal.com\/docs\/api\/payments.payouts-batch\/#errors\",\n                \"details\": []\n            },\n            \"links\": [\n                {\n                    \"href\": \"https:\/\/api.sandbox.paypal.com\/v1\/payments\/payouts-item\/RWD4Y3H9VV8BA\",\n                    \"rel\": \"item\",\n                    \"method\": \"GET\",\n                    \"encType\": \"application\/json\"\n                }\n            ]\n        }\n    ],\n    \"links\": [\n        {\n            \"href\": \"https:\/\/api.sandbox.paypal.com\/v1\/payments\/payouts\/DQCP2UAJCBMNY\",\n            \"rel\": \"self\",\n            \"method\": \"GET\",\n            \"encType\": \"application\/json\"\n        }\n    ]\n}"
+                }]
+            }, {
+                "name": "Error Scenario - GET - INVALID_RESOURCE_ID",
+                "_postman_id": "04040038-978e-4ec6-b5a1-deb89e70b6e1",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO057",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO057<\/code> trigger value as a path parameter to simulate a negative payload with a `INVALID_RESOURCE_ID` error response for payouts-item. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - INVALID_EMAIL",
+                "_postman_id": "2e8b0cb3-b4a9-41b4-ac4f-a65473f5a3a9",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO059",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO059<\/code> trigger value as a path parameter to simulate a negative payload with a `INVALID_EMAIL` error response for payouts-item. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - INTERNAL_ERROR",
+                "_postman_id": "1571d343-5934-408e-96ca-065e2fd90d08",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application\/json"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO058",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO058<\/code> trigger value as a path parameter to simulate a negative payload with a `INTERNAL_ERROR` error response for payouts-item. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }, {
+                "name": "Error Scenario - GET - RECEIVER_ACCOUNT_LIMITATION",
+                "_postman_id": "3266ae9f-56d1-41e9-a091-9a8ae00e55e4",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json",
+                        "type": "text"
+                    }, {
+                        "key": "Authorization",
+                        "value": "Bearer <your_access_token>",
+                        "type": "text"
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/ERRPYO061",
+                    "description": "This is a negative simulation that uses the <code>ERRPYO061<\/code> trigger value as a path parameter to simulate a negative payload with a `RECEIVER_ACCOUNT_LIMITATION` error response. \nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": []
+            }],
+            "_postman_id": "aac9c785-162e-49f9-bd5f-436242a18f99",
+            "protocolProfileBehavior": {},
+            "_postman_isSubFolder": true
+        }, {
+            "name": "Show Payout item- Positive response test value",
+            "item": [{
+                "name": "Positive Scenario - GET",
+                "_postman_id": "f68c6e14-56ea-4e19-b34d-a399a2a32ed8",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "GET",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }, {
+                        "key": "Authorization",
+                        "value": "Bearer <your access_token>",
+                        "warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+                        "disabled": true
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/POSPOI001",
+                    "description": "This is a positive simulation that uses the <code>POSPOI001<\/code> trigger value as a path parameter to simulate a payload with a 200 response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": [{
+                    "id": "af764692-4198-4aca-a51e-748ae0777d40",
+                    "name": "Positive Scenario - GET",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [{
+                            "key": "Content-Type",
+                            "value": "application\/json"
+                        }, {
+                            "warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+                            "key": "Authorization",
+                            "value": "Bearer <your access_token>"
+                        }],
+                        "url": "https:\/\/api.sandbox.paypal.com\/v1\/payments\/payouts\/POSPYO002"
+                    },
+                    "status": "Created",
+                    "code": 201,
+                    "_postman_previewlanguage": "json",
+                    "header": [{
+                        "key": "Date",
+                        "value": "Thu, 06 Dec 2018 23:22:12 GMT"
+                    }, {
+                        "key": "Server",
+                        "value": "Apache"
+                    }, {
+                        "key": "paypal-debug-id",
+                        "value": "9e943ae634b77"
+                    }, {
+                        "key": "HTTP_X_PP_AZ_LOCATOR",
+                        "value": "sandbox.slc"
+                    }, {
+                        "key": "Paypal-Debug-Id",
+                        "value": "9e943ae634b77"
+                    }, {
+                        "key": "Set-Cookie",
+                        "value": "X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D615450972%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Thu, 06 Dec 2018 23:52:12 GMT; domain=.paypal.com; path=\/; Secure; HttpOnly"
+                    }, {
+                        "key": "Set-Cookie",
+                        "value": "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                    }, {
+                        "key": "Vary",
+                        "value": "Authorization"
+                    }, {
+                        "key": "Content-Length",
+                        "value": "1465"
+                    }, {
+                        "key": "Connection",
+                        "value": "close"
+                    }, {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }],
+                    "cookie": [],
+                    "body": "{\n    \"batch_header\": {\n        \"payout_batch_id\": \"83TEPJXBQJXZE\",\n        \"batch_status\": \"SUCCESS\",\n        \"time_created\": \"2017-08-22T14:55:09Z\",\n        \"time_completed\": \"2017-08-22T14:55:35Z\",\n        \"sender_batch_header\": {\n            \"sender_batch_id\": \"API-15\",\n            \"email_subject\": \"Test batch status\"\n        },\n        \"amount\": {\n            \"currency\": \"USD\",\n            \"value\": \"25.8\"\n        },\n        \"fees\": {\n            \"currency\": \"USD\",\n            \"value\": \"0.25\"\n        }\n    },\n    \"items\": [\n        {\n            \"payout_item_id\": \"4E3JKYRYWRJGS\",\n            \"transaction_id\": \"1TG05351YN272080Y\",\n            \"transaction_status\": \"SUCCESS\",\n            \"payout_item_fee\": {\n                \"currency\": \"USD\",\n                \"value\": \"0.25\"\n            },\n            \"payout_batch_id\": \"83TEPJXBQJXZE\",\n            \"payout_item\": {\n                \"recipient_type\": \"EMAIL\",\n                \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"25.8\"\n                },\n                \"note\": \"payout to  receiver test1\",\n                \"receiver\": \"user-us@paypal.com\",\n                \"sender_item_id\": \"ID-30\"\n            },\n            \"time_processed\": \"2017-08-22T14:55:31Z\",\n            \"links\": [\n                {\n                    \"href\": \"https:\/\/api.sandbox.paypal.com\/v1\/payments\/payouts-item\/4E3JKYRYWRJGS\",\n                    \"rel\": \"item\",\n                    \"method\": \"GET\",\n                    \"encType\": \"application\/json\"\n                }\n            ]\n        }\n    ],\n    \"links\": [\n        {\n            \"href\": \"https:\/\/api.sandbox.paypal.com\/v1\/payments\/payouts\/83TEPJXBQJXZE\",\n            \"rel\": \"self\",\n            \"method\": \"GET\",\n            \"encType\": \"application\/json\"\n        }\n    ]\n}"
+                }]
+            }],
+            "_postman_id": "86cfa329-dd17-4f39-93b5-89833820e499",
+            "protocolProfileBehavior": {},
+            "_postman_isSubFolder": true
+        }, {
+            "name": "Cancel Payout item - Positive response test value",
+            "item": [{
+                "name": "Positive Scenario - POST",
+                "_postman_id": "52e7add0-3748-4794-889b-44f17a686bc2",
+                "request": {
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": {
+                            "token": "{{access_token}}"
+                        }
+                    },
+                    "method": "POST",
+                    "header": [{
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }, {
+                        "key": "Authorization",
+                        "value": "Bearer <your access_token>",
+                        "warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+                        "disabled": true
+                    }],
+                    "url": "{{host}}\/v1\/payments\/payouts-item\/POSPOI002\/cancel",
+                    "description": "This is a positive simulation that uses the <code>POSPOI002<\/code> trigger value as a path parameter to simulate a payload with a 200 response. \n\nThe <code>access_token<\/code> value you generated in Step 1 is captured as a variable and used as the Bearer Token to authenticate this request."
+                },
+                "response": [{
+                    "id": "ea3e2dd9-afad-440e-8884-45094fde7491",
+                    "name": "Positive Scenario - GET",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [{
+                            "key": "Content-Type",
+                            "value": "application\/json"
+                        }, {
+                            "warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+                            "key": "Authorization",
+                            "value": "Bearer <your access_token>"
+                        }],
+                        "url": "https:\/\/api.sandbox.paypal.com\/v1\/payments\/payouts\/POSPYO002"
+                    },
+                    "status": "Created",
+                    "code": 201,
+                    "_postman_previewlanguage": "json",
+                    "header": [{
+                        "key": "Date",
+                        "value": "Thu, 06 Dec 2018 23:22:12 GMT"
+                    }, {
+                        "key": "Server",
+                        "value": "Apache"
+                    }, {
+                        "key": "paypal-debug-id",
+                        "value": "9e943ae634b77"
+                    }, {
+                        "key": "HTTP_X_PP_AZ_LOCATOR",
+                        "value": "sandbox.slc"
+                    }, {
+                        "key": "Paypal-Debug-Id",
+                        "value": "9e943ae634b77"
+                    }, {
+                        "key": "Set-Cookie",
+                        "value": "X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D615450972%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Thu, 06 Dec 2018 23:52:12 GMT; domain=.paypal.com; path=\/; Secure; HttpOnly"
+                    }, {
+                        "key": "Set-Cookie",
+                        "value": "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                    }, {
+                        "key": "Vary",
+                        "value": "Authorization"
+                    }, {
+                        "key": "Content-Length",
+                        "value": "1465"
+                    }, {
+                        "key": "Connection",
+                        "value": "close"
+                    }, {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }],
+                    "cookie": [],
+                    "body": "{\n    \"batch_header\": {\n        \"payout_batch_id\": \"83TEPJXBQJXZE\",\n        \"batch_status\": \"SUCCESS\",\n        \"time_created\": \"2017-08-22T14:55:09Z\",\n        \"time_completed\": \"2017-08-22T14:55:35Z\",\n        \"sender_batch_header\": {\n            \"sender_batch_id\": \"API-15\",\n            \"email_subject\": \"Test batch status\"\n        },\n        \"amount\": {\n            \"currency\": \"USD\",\n            \"value\": \"25.8\"\n        },\n        \"fees\": {\n            \"currency\": \"USD\",\n            \"value\": \"0.25\"\n        }\n    },\n    \"items\": [\n        {\n            \"payout_item_id\": \"4E3JKYRYWRJGS\",\n            \"transaction_id\": \"1TG05351YN272080Y\",\n            \"transaction_status\": \"SUCCESS\",\n            \"payout_item_fee\": {\n                \"currency\": \"USD\",\n                \"value\": \"0.25\"\n            },\n            \"payout_batch_id\": \"83TEPJXBQJXZE\",\n            \"payout_item\": {\n                \"recipient_type\": \"EMAIL\",\n                \"amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"25.8\"\n                },\n                \"note\": \"payout to  receiver test1\",\n                \"receiver\": \"user-us@paypal.com\",\n                \"sender_item_id\": \"ID-30\"\n            },\n            \"time_processed\": \"2017-08-22T14:55:31Z\",\n            \"links\": [\n                {\n                    \"href\": \"https:\/\/api.sandbox.paypal.com\/v1\/payments\/payouts-item\/4E3JKYRYWRJGS\",\n                    \"rel\": \"item\",\n                    \"method\": \"GET\",\n                    \"encType\": \"application\/json\"\n                }\n            ]\n        }\n    ],\n    \"links\": [\n        {\n            \"href\": \"https:\/\/api.sandbox.paypal.com\/v1\/payments\/payouts\/83TEPJXBQJXZE\",\n            \"rel\": \"self\",\n            \"method\": \"GET\",\n            \"encType\": \"application\/json\"\n        }\n    ]\n}"
+                }]
+            }],
+            "_postman_id": "54c846f7-023e-44ab-9eaf-64e93b449397",
+            "protocolProfileBehavior": {},
+            "_postman_isSubFolder": true
+        }],
+        "_postman_id": "c449acc0-3ab2-4fc7-91dc-eaa45494687e",
+        "protocolProfileBehavior": {}
+    }],
+    "protocolProfileBehavior": {}
+}
