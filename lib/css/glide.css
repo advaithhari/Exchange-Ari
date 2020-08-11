@@ -16,18 +16,27 @@
     width: 100%;
     height: 100%;
     margin: 0%;
-    padding: 2%;
+    min-height: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.glide .card img {
+    width: 40%;
 }
 
 .glide .cardContent {
-    margin: 0;
-    padding: 0;
+    padding: 4%;
 }
 
-.glide .card-title, .glide .card-category, .glide .card-description {
+.glide .card-title, .glide .card-description {
     margin: 0;
     padding: 0;
     font-size: 18px;
+}
+
+.glide .card-category {
+    padding: 1%;
 }
 
 .glide__slide {
@@ -49,11 +58,11 @@
 }
 
 .glide__arrow--left {
-    left: 0;
+    left: -3%;
     top: 40%
 }
 
 .glide__arrow--right {
-    right: 0;
+    right: -3%;
     top: 40%
 }

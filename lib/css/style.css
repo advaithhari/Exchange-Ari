@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    scroll-behavior: smooth;
 }
  
 body {
@@ -17,7 +18,7 @@ hr {
     background: -webkit-linear-gradient(98deg,#FFC46C, #9328E8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 36px;
+    font-size: 32px;
 }
  
 nav {
@@ -25,6 +26,7 @@ nav {
     background: #202020;
     align-items: center;
     justify-content: space-between;
+    padding: none;
 }
  
 .nav-right {
@@ -59,14 +61,16 @@ a:hover {
  
 .top-section {
     display: flex;
-    margin: 5% 2% 2% 2%; 
+    margin: 2% 15%;
     align-content: center;
-    justify-content: center;
+    justify-content: space-between;
+    position: relative;
 }
  
 .description {
     display: flex;
     flex-direction: column;
+    margin: 5% 2% 2% 2%;
 }
  
 .phrase{
@@ -93,6 +97,12 @@ a:hover {
     letter-spacing: 0.02em;
     width: 40%;
     color: #E9E9E9;
+}
+
+.top-logo {
+    position: absolute;
+    right: 0;
+    top: 0;
 }
  
 .crequests {
@@ -177,6 +187,11 @@ a:hover {
     background: #313030;
     transition: all 300ms;
 }
+
+.modal-body{
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
  
 .modal-top {
     display: flex;
@@ -192,8 +207,10 @@ a:hover {
     background: -webkit-linear-gradient(98deg,#FFC46C, #9328E8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 36px;
+    font-size: 28px;
+    margin: 0;
 }
+
  
 .close-modal-button {
     color: gray;
@@ -231,6 +248,7 @@ label, #image-upload-input, #myImg {
     font-size: 18px;
     border-radius: 10px;
     border: none;
+    margin: 1% 0;
 }
 
 
@@ -239,7 +257,7 @@ label, #image-upload-input, #myImg {
 }
  
 #request-description {
-    padding: 1% 10% 10% 1%;
+    padding: 1% 5% 5% 1%;
 }
  
 .user-input:focus {
@@ -260,8 +278,9 @@ label, #image-upload-input, #myImg {
  
 .card {
     position: static;
-    width: 20%;
-    height: 200px;
+    width: 24%;
+    min-height: 500px;
+    max-height: 500px;
     /* background: linear-gradient(209.22deg, #ECAF44 -1.93%, #C23FC5 101.64%); */
     background: #696574;
     /* box-shadow: 10px 10px 4px 3px rgba(196, 123, 208, 0.25); */
@@ -282,14 +301,19 @@ label, #image-upload-input, #myImg {
 .cardContent {
     padding:10%;
 }
- 
+
+.card-img {
+    height: 300px;
+}
+
 .card-title {
     font-family: 'Roboto';
     font-weight: 900;
     background: -webkit-linear-gradient(98deg,#fa9f16, #b96ff5);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 24px;
+    font-size: 20px;
+    margin: 2%;
 }
 
 .card-category {
@@ -297,12 +321,13 @@ label, #image-upload-input, #myImg {
     background: #EDB241;
     display: inline-block;
     border-radius: 10px;
-    padding: 2%;
-    margin: 5%;
+    padding: 3%;
+    margin: 2% 0;
     font-weight: 100;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    color: white;
 }
 
 .card-description {
@@ -353,6 +378,11 @@ label, #image-upload-input, #myImg {
         margin: 5%;
     }
 
+    .request-modal {
+        margin: 0;
+        width: 90%;
+    }
+
     .request-button {
         margin: 10% 0;
         width: 100%;
@@ -367,4 +397,22 @@ label, #image-upload-input, #myImg {
         width: 80%;
         margin: 5% 0;
     }
+}
+
+
+
+
+.decoration-highlight {
+    position: fixed;
+    background: linear-gradient(268deg, #EDB241 0%, #B51EEA 97.59%);
+    padding: 1%;
+    border-radius: 4px 4px 0px 0px;
+    width: 100%;
+    clip-path: circle(10% at 50% 0%);
+    transition: all 300ms;
+}
+
+.card:hover > .decoration-highlight {
+    position: static;
+    clip-path: circle(75%);
 }

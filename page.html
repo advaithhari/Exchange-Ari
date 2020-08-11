@@ -14,13 +14,23 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
+    <!-- Icons -->
+    <link rel="icon" href="src/Ari Exchange.png">
+ 
     <!-- Styles/Fonts -->
     <link rel="stylesheet" href="lib/css/style.css">
+    <link rel="stylesheet" href="lib/css/page.css">
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&family=Roboto&display=swap" rel="stylesheet">
 
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="768412568472-8u5hs8hgfo983bfo2mf2g8657a5c8llb.apps.googleusercontent.com">
+
+    <script src = "/lib/js/auth.js" defer></script>
     <script src="lib/js/page.js" defer></script>
+
 
    
 
@@ -49,11 +59,31 @@
                     </li> -->
             </ul>
         </div>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <a href="#" class="signOut" onclick="onSignOut();">Sign out</a>
     </nav>
-    <p class="description-page-title"></p>
-    <p class="description-page-category"></p>
-    <p class="description-page-description"></p>
-    <img class = "description-page-image"> </img>
+    <div class="main-container">
+        <div class="content-container">
+            <p class="description-page-title"></p>
+            <p class="description-page-category"></p>
+            <p class="description-page-description"></p>
+            <img class = "description-page-image"></img>
+        </div>
+        
+    
+        <div class="comments-container">
+            <div class="comments">
+                
+            </div>
+            <form class="comment-form">
+                <input type="text" id="comment-input">
+                <button type="submit" id="comment-submit">Comment</button>
+            </form>
+        </div>
+    </div>
+    
+
+
     <!-- Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -66,3 +96,4 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
+

@@ -3,7 +3,6 @@ body {
     /* background: #313131 */
 }
  
- 
 .nav-title {
     font-family: 'Audiowide', cursive;
     background: -webkit-linear-gradient(98deg,#FFC46C, #9328E8);
@@ -26,7 +25,7 @@ nav {
 }
 
 .navbar-nav {
-    width: 30%;
+    width: 80%;
     display: flex;
     justify-content: space-evenly;
     /* border: 1px solid white; */
@@ -45,5 +44,24 @@ nav {
 
 body{
     text-align: center;
+    background-color:rgba(28, 29, 49); 
     color:white;
+}
+a:hover{
+    text-decoration: none;
+    color: lightgray;
+}
+
+
+@media(max-width:700px) {  
+
+    .nav-title {
+        font-size: 35px;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }
