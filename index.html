@@ -38,6 +38,7 @@
     <script src="lib/js/requestModal.js" defer></script>
     <script src="lib/js/cards.js" defer></script>
     <!-- <script src="lib/js/page.js" defer></script> -->
+    <script src="lib/js/selectGenerator.js" defer></script>
  
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide" defer></script>
     <script src="lib/js/glider.js" defer></script>
@@ -154,8 +155,11 @@
                     <label for="search-category-input">Search By Category</label>
                     <div>
                         <i class="fas fa-search"></i>
-                        <input class="user-input" id="search-category-input" type="text" name="search-category-input" placeholder="All">
-                        <button class="search-button" type="submit" id="category-search-button"></button>
+                        <!-- <input class="user-input" id="search-category-input" type="text" name="search-category-input" placeholder="All"> -->
+                        <select name="request-category" id="search-category-input" class="user-input category-select"\>
+
+                        </select>
+                        <button class="search-button" type="submit" id="category-search-button">Search</button>
                     </div>
                 </form>
             </div>
@@ -172,11 +176,14 @@
                     <label for="request-title">Title Your Request!</label>
                     <input type="text" class="user-input" id="request-title" name="request-title" autocomplete="off" required />
                     <label for="request-category">Category</label>
-                    <input type="text" class="user-input" id="request-category" name="request-category" autocomplete="off" required />
+                    <!-- <input type="text" class="user-input" id="request-category" name="request-category" autocomplete="off" required /> -->
+                    <select name="request-category" id="request-category-modal" class="user-input category-select">
+
+                    </select>
                     <label for="request-category">Write a description!</label>
                     <input type="text" class="user-input" id="request-description" name="request-description" autocomplete="off" required />
                     <label for="request-category">Desired Price</label>
-                    <input type="number" step="0.01" min="0" class="user-input" id="desired-price" name="desired-price" autocomplete="off" required />
+                    <input type="number" step="0.01" min="0" class="user-input" id="desired-price" name="desired-price" autocomplete="off" value="0.00" required />
                     <label for="buyer-image">Submit a Link of an Image of the Product!</label>
                     <input type="text" name="image" class="user-input" id="request-image" autocomplete="off">
                     <!-- <input type="file" accept="image/*" onchange="preview_image(event)"> -->

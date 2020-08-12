@@ -25,6 +25,7 @@
 
 .content-container {
     margin-right: 2%;
+    width: 60%;
     /* display: flex; */
     /* flex-direction: column; */
     overflow: auto;
@@ -59,10 +60,11 @@
 .description-page-description {
     font-family: Nunito;
     color: white;
+    max-width: 70%;
 }
 
 .description-page-image {
-    max-width: 95%;
+    max-width: 90%;
 }
 
 .comments-container {

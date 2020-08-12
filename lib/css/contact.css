@@ -20,14 +20,26 @@ body {
     background-color:rgba(28, 29, 49); 
     color:white;
 }
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-family: Nunito;
+    background: #202020;
+    color: white;
+    padding: 2%;
+}
  
 .nav-title {
     font-family: 'Audiowide', cursive;
     background: -webkit-linear-gradient(98deg,#FFC46C, #9328E8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-   font-size: 350%;
+    font-size: 32px;
 }
+
 nav {
     display: flex;
     padding: 1%;
