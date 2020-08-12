@@ -17,14 +17,16 @@
 .main-container {
     display: flex;
     margin: 3% 15%;
-    /* border: 1px solid white; */
+    padding: 5%;
+    /* border: 0.11px solid rgb(125, 125, 139); */
+    /* background: rgb(125, 125, 139); */
+    border-radius: 6px;
 }
 
 .content-container {
     margin-right: 2%;
     /* display: flex; */
     /* flex-direction: column; */
-    /* border: 1px solid white;  */
     overflow: auto;
 }
 
@@ -65,8 +67,9 @@
 
 .comments-container {
     width: 60%;
-    margin-left: 20%;
+    padding-left: 5%;
     margin-top: 5%;
+    border-left: 1px solid rgb(125, 125, 139)
 }
 
 .comments-form {
@@ -76,18 +79,21 @@
 }
 
 #comment-input {
-    width: 500px;
+    width: 100%;
     margin: 3% 0;
     color: white;
     background: rgb(28, 29, 49);
     color: white;
     border: none;
     border-bottom: 1px solid white;
+    border-left: 1px solid white;
 }
 
 #comment-input:focus {
     outline: none;
     border-bottom: 1px solid #D77882;
+    border-left: 1px solid #D77882;
+
 }
 
 
@@ -163,6 +169,27 @@
     color: pink;
 }
 
+
+@media(max-width:1000px) {
+    .main-container {
+        flex-direction: column;
+    }
+
+    .comments-container {
+        width: 100%;
+        margin-left: 0;
+        padding: 0;
+        border: none;
+        /* border: 1px solid white; */
+    }
+
+    #comment-submit {
+        font-size: 16px;
+    }
+}
 /* .comment:hover {
         background: rgb(61, 64, 107)
     } */
+    .description-page-price{
+        color:yellow ;
+    }
