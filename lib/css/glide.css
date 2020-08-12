@@ -1,6 +1,5 @@
 .glide {
     color: white;
-    margin-right: 10%;
     /* border: 1px solid white; */
     position: relative;
     width: 60%;
@@ -19,26 +18,33 @@
     min-height: 0;
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
-
+ 
 .glide .card img {
     width: 40%;
+    min-height: 100%;
 }
-
+ 
 .glide .cardContent {
     padding: 4%;
 }
-
+ 
 .glide .card-title, .glide .card-description {
     margin: 0;
     padding: 0;
-    font-size: 18px;
+    font-family: Nunito;
 }
-
+ 
+.glide .card-description {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+}
+ 
 .glide .card-category {
     padding: 1%;
 }
-
+ 
 .glide__slide {
     display: inline-block;
     margin: 0;
@@ -46,7 +52,7 @@
     width: 75%;
     /* border: 1px solid white; */
 }
-
+ 
 .glide__arrow {
     background: rgba(72, 88, 97, 0.6);
     position: absolute;
@@ -56,13 +62,47 @@
     border-radius: 8px;
     border: 1px solid white;
 }
-
+ 
 .glide__arrow--left {
     left: -3%;
     top: 40%
 }
-
+ 
 .glide__arrow--right {
     right: -3%;
     top: 40%
 }
+ 
+@media(max-width:900px) {
+ 
+    .glide .card {
+        flex-direction: column;
+    }
+ 
+    .glide .card img{
+        width: 100%;
+        margin: 0;
+        max-height: 250px;
+    }
+ 
+    .glide .card .card-description{
+        font-size: 12px;
+    }   
+}
+ 
+@media(max-width:800px) {
+     .glide {
+        margin: 5%;
+        width: 90%
+    }
+}
+ 
+@media(max-width:500px) {
+    .glide .card img{
+        width: 100%;
+        margin: 0;
+        max-height: 200px;
+    }
+  
+}
+
