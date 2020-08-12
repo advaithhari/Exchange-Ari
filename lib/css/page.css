@@ -54,6 +54,14 @@
     /* border: 1px solid white; */
 }
 
+/* .comments li {
+    border: 1px solid white;
+} */
+/* 
+.comments li:nth-child(odd) {
+    background: rgb(60, 62, 105)
+} */
+
 .comments-form {
     position: absolute;
     bottom: 0px;
@@ -62,4 +70,9 @@
 .comment {
     list-style: none;
     color: white;
+}
+
+.profile-img {
+    width: 20%;
+    border-radius: 40px;
 }
