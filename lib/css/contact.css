@@ -16,7 +16,9 @@ background: #555;
 
 body {
     background-color:rgba(28, 29, 49);  
-    /* background: #313131 */
+    text-align: center;
+    background-color:rgba(28, 29, 49); 
+    color:white;
 }
  
 .nav-title {
@@ -32,6 +34,7 @@ nav {
     background: #202020;
     align-items: center;
     justify-content: space-between;
+    text-align: left;
 }
  
 .nav-right {
@@ -58,11 +61,7 @@ nav {
     text-decoration: none;
 }
 
-body{
-    text-align: center;
-    background-color:rgba(28, 29, 49); 
-    color:white;
-}
+
 a:hover{
     text-decoration: none;
     color: lightgray;

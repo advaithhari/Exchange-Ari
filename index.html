@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="lib/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@600&display=swap" rel="stylesheet">
-    <!-- https://www.youtube.com/watch?v=dQw4w9WgXcQ -->
+    <script src="https://kit.fontawesome.com/f63eb37a69.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="lib/css/glide.core.min.css">
     <link rel="stylesheet" href="lib/css/glide.css">
@@ -71,14 +71,14 @@
                 </li>
                  <li class="nav-item">
                     <div class="signs">
-                     
+                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                        <a href="#" class="signOut" onclick="onSignOut();">Sign out</a>
                     </div>
                 </li> 
             </ul>
           
         </div>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-        <a href="#" class="signOut" onclick="onSignOut();">Sign out</a>
+        
     </nav>
  
     
@@ -140,24 +140,25 @@
                 </ul>
             </div>
             <div class="glide__arrows" data-glide-el="controls">
-                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i class="fas fa-angle-left"></i></button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i class="fas fa-angle-right"></i></button>
             </div>
         </div>
         
         <hr>
  
         <div class="user-menu" id="allRequests">
+            <button class="request-button">Make A Request!</button>
             <div class="search">
                 <form class="search-category">
                     <label for="search-category-input">Search By Category</label>
                     <div>
-                        <input class="user-input" id="search-category-input" type="text" name="search-category-input">
-                        <button class="search-button" type="submit" id="category-search-button"><i class="fa fa-search">search</i></button>
+                        <i class="fas fa-search"></i>
+                        <input class="user-input" id="search-category-input" type="text" name="search-category-input" placeholder="All">
+                        <button class="search-button" type="submit" id="category-search-button"></button>
                     </div>
                 </form>
             </div>
-            <button class="request-button">Make A Request!</button>
         </div>
     
         <div id="modal-page-mask"></div>

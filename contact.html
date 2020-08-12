@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-
     
     <!-- Icons -->
     <link rel="icon" href="src/Ari Exchange.png">
@@ -44,13 +42,12 @@
                 <a class="nav-button" href="contact.html">Contact</a>
             </li>
              <li class="nav-item">
-                <div class="signs">
-                 
-                </div>
+                <li class="nav-item">
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    <a href="#" class="signOut" onclick="onSignOut();">Sign out</a>
+                </li>
             </li> 
         </ul>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-        <a href="#" class="signOut" onclick="onSignOut();">Sign out</a>
     </nav>
 
 <!-- BOOTSTRAP -->

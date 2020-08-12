@@ -27,7 +27,7 @@ body {
 
 hr {
     border: 1px solid white;
-    margin: 5% 5%;
+    margin: 2% 5%;
 }
 
 .nav-title {
@@ -59,6 +59,7 @@ nav {
     /* border: 1px solid white; */
 }
 
+
 .nav-button {
     font-family: Nunito;
     font-style: normal;
@@ -76,13 +77,10 @@ a:hover {
     color: lightgray;
 }
 
-.g-signin2 {
-    color: white;
-    background: gray;
-}
 
 .top-section {
     margin: 5% 15%;
+    margin-left: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -127,30 +125,9 @@ a:hover {
 }
 
 .top-logo {
-    width: 50%;
+    width: 40%;
     /* border: 1px solid white; */
 }
-
-/* .top-section {
-        display: flex;
-        margin: 2% 15%;
-    }
-     
-    .description {
-        display: flex;
-        flex-direction: column;
-        margin: 5% 2% 2% 2%;
-        border: 1px solid white;
-    }
-     
-     
-     
-     
-     
-     
-     
-    */
-
 
 .crequests {
 
@@ -175,9 +152,10 @@ a:hover {
 
 .user-menu {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 2% 15%;
+    /* justify-content: space-between; */
+    flex-direction: column;
+    /* align-items: center; */
+    margin: 0 18%;
     /* padding: 2%; */
     /* border: 1px solid black;  */
 }
@@ -185,6 +163,28 @@ a:hover {
 .search-category {
     display: flex;
     flex-direction: column;
+    /* border: 1px solid white; */
+    /* width: 200%; */
+}
+
+#search-category-input {
+    background: #3c3f4d;
+    border: none;
+    width: 30%;
+    padding: .5%;
+    border-radius: 10px;
+}
+
+.fa-search {
+    color: white;
+}
+
+#search-category-input:focus {
+    outline: none;
+}
+
+#category-search-button {
+    display: none;
 }
 
 .request-button {
@@ -200,6 +200,7 @@ a:hover {
     font-size: 20px;
     letter-spacing: 0.05em;
     padding: 1%;
+    margin: 2% 0;
     transition: all 200ms;
 }
 
@@ -275,9 +276,7 @@ a:hover {
     margin: 2%;
 }
 
-label,
-#image-upload-input,
-#myImg {
+label, #image-upload-input, #myImg {
     font-family: Nunito;
     font-weight: 100;
     color: lightgray;
@@ -412,6 +411,10 @@ label,
         font-size: 35px;
     }
 
+    .nav-item {
+        margin: 2%;
+    }
+
     body {
         display: flex;
         flex-direction: column;
@@ -466,7 +469,7 @@ label,
 
     .card-container {
         flex-direction: column;
-        justify-content: center;
+        align-items: center;
     }
 
     .card {
