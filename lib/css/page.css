@@ -62,7 +62,7 @@
 }
 
 .description-page-image {
-    max-width: 500px;
+    max-width: 95%;
 }
 
 .comments-container {
@@ -124,12 +124,6 @@
     color: rgb(209, 209, 209);
 }
 
-.comment-head {
-    /* border: 1px solid white; */
-
-}
-
-
 .profile-img {
     width: 30px;
     border-radius: 40px;
@@ -169,10 +163,17 @@
     color: pink;
 }
 
+footer {
+    font-family: Nunito;
+    background: #202020;
+    color: white;
+    padding: 2%;
+}
 
 @media(max-width:1000px) {
     .main-container {
         flex-direction: column;
+        margin: 2%;
     }
 
     .comments-container {
