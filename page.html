@@ -9,11 +9,11 @@
     <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
     <script src="lib/js/firebaseConfig.js" defer></script>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
     <!-- Icons -->
     <link rel="icon" href="src/Ari Exchange.png">
  
@@ -28,7 +28,7 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="768412568472-8u5hs8hgfo983bfo2mf2g8657a5c8llb.apps.googleusercontent.com">
 
-    <script src = "/lib/js/auth.js" defer></script>
+
     <script src="lib/js/page.js" defer></script>
 
 
@@ -70,18 +70,18 @@
             <img class = "description-page-image"></img>
         </div>
         
-    
         <div class="comments-container">
             <ul class="all-comments">
                 
             </ul>
             <form class="comment-form">
-                <input type="text" id="comment-input">
+                <input type="text" id="comment-input" autocomplete="off">
                 <button type="submit" id="comment-submit">Comment</button>
             </form>
         </div>
     </div>
-    
+    <div class="avatar" data-tooltip="Thinking Cat"></div>
+
 
 
     <!-- Bootstrap -->

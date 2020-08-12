@@ -1,3 +1,19 @@
+/* width */
+::-webkit-scrollbar {
+width: 5px;
+border-radius: 4px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555; 
+}
+
 body {
     background-color:rgba(28, 29, 49);  
     /* background: #313131 */

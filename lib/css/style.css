@@ -1,3 +1,20 @@
+/* width */
+::-webkit-scrollbar {
+width: 5px;
+border-radius: 4px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #888; 
+border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555; 
+}
+
 * {
     margin: 0;
     scroll-behavior: smooth;
