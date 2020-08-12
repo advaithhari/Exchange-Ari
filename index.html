@@ -10,7 +10,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
     <script src="lib/js/firebaseConfig.js" defer></script>
-
+ 
     <!-- Auth -->   
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="768412568472-8u5hs8hgfo983bfo2mf2g8657a5c8llb.apps.googleusercontent.com">
@@ -18,7 +18,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
             integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
+ 
     <!-- Styles/Fonts -->
     <link rel="stylesheet" href="lib/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
@@ -38,10 +38,10 @@
     <script src="lib/js/requestModal.js" defer></script>
     <script src="lib/js/cards.js" defer></script>
     <!-- <script src="lib/js/page.js" defer></script> -->
-
+ 
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide" defer></script>
     <script src="lib/js/glider.js" defer></script>
-
+ 
 </head>
  
 <body>
@@ -78,11 +78,11 @@
           
         </div>
         <div class="g-signin2" data-onsuccess="onSignIn"></div>
-        <a href="#" class="signOut" onclick="onSignOut();">Sign out</a>
+        <!-- <a href="#" class="signOut" onclick="onSignOut();">Sign out</a> -->
     </nav>
-
+ 
     
-
+ 
     
     <section class="top-section">
         <div class="description">
@@ -95,7 +95,7 @@
         </div>
         <img class="top-logo" src="src/Ari Exchange Transparent.png">
     </section>
-
+ 
     <div class="main-container">
         <div class="glide">
             <div class="glide__track" data-glide-el="track">
@@ -155,7 +155,7 @@
         </div>
         
         <hr>
-
+ 
         <div class="user-menu" id="allRequests">
             <div class="search">
                 <form class="search-category">
@@ -178,13 +178,15 @@
                 </div>
                 <form class="request-modal-form">
                     <label for="request-title">Title Your Request!</label>
-                    <input type="text" class="user-input" id="request-title" name="request-title" required />
+                    <input type="text" class="user-input" id="request-title" name="request-title" autocomplete="off" required />
                     <label for="request-category">Category</label>
-                    <input type="text" class="user-input" id="request-category" name="request-category" required />
+                    <input type="text" class="user-input" id="request-category" name="request-category" autocomplete="off" required />
                     <label for="request-category">Write a description!</label>
-                    <input type="text" class="user-input" id="request-description" name="request-description" required />
+                    <input type="text" class="user-input" id="request-description" name="request-description" autocomplete="off" required />
+                    <label for="request-category">Desired Price</label>
+                    <input type="number" step="0.01" min="0" class="user-input" id="desired-price" name="desired-price" autocomplete="off" required />
                     <label for="buyer-image">Submit a Link of an Image of the Product!</label>
-                    <input type="text" name="image" class="user-input" id="request-image">
+                    <input type="text" name="image" class="user-input" id="request-image" autocomplete="off">
                     <!-- <input type="file" accept="image/*" onchange="preview_image(event)"> -->
                     <!-- <img id="myImg" src="#" alt="  Image:" height=200 width=100> -->
                     <button type="submit" id="submit-request-button" class="crequests">Submit</button>
@@ -196,10 +198,10 @@
         
         </div>
     </div>
-
+ 
     
-
-
+ 
+ 
     <!-- BOOTSTRAP -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

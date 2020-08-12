@@ -1,22 +1,23 @@
 /* width */
 ::-webkit-scrollbar {
-width: 5px;
-border-radius: 4px;
+    width: 5px;
+    border-radius: 4px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-background: #888; 
+    background: #888;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-background: #555; 
+    background: #555;
 }
 
 .main-container {
     display: flex;
     margin: 3% 15%;
+    border: 1px solid white;
 }
 
 .content-container {
@@ -64,7 +65,8 @@ background: #555;
 
 .comments-container {
     width: 60%;
-    margin-left: 5%;
+    margin-left: 20%;
+    margin-top: 5%;
 }
 
 .comments-form {
@@ -88,16 +90,11 @@ background: #555;
     border-bottom: 1px solid #D77882;
 }
 
-.all-comments {
-    /* border: 1px solid white; */
-    max-height: calc(100vh - 200px);
-    overflow-y: auto;
-    padding: 0;
-}
+
 
 /* .all-comments li:nth-Child(odd) {
-    background: rgb(51, 58, 80);
-} */
+        background: rgb(51, 58, 80);
+    } */
 
 .comment {
     list-style: none;
@@ -110,14 +107,14 @@ background: #555;
 
 .comment-right {
     width: 100%;
-    margin: 1% 5%;
+    margin: 1% 2%;
 }
 
 .comment-content {
     display: flex;
     flex-direction: column;
     margin: 2% 0;
-    margin-bottom: 5%; 
+    margin-bottom: 5%;
     color: rgb(209, 209, 209);
 }
 
@@ -128,7 +125,7 @@ background: #555;
 
 
 .profile-img {
-    width: 7%;
+    width: 4%;
     border-radius: 40px;
     margin: 1%;
 }
@@ -167,5 +164,5 @@ background: #555;
 }
 
 /* .comment:hover {
-    background: rgb(61, 64, 107)
-} */
+        background: rgb(61, 64, 107)
+    } */
