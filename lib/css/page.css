@@ -67,6 +67,10 @@
     max-width: 90%;
 }
 
+.description-page-price{
+    color:yellow ;
+}
+
 .comments-container {
     width: 60%;
     padding-left: 5%;
@@ -166,6 +170,9 @@
 }
 
 footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     font-family: Nunito;
     background: #202020;
     color: white;
@@ -176,6 +183,16 @@ footer {
     .main-container {
         flex-direction: column;
         margin: 2%;
+    }
+
+    .content-container {
+        /* text-align: center; */
+        /* display: flex; */
+        justify-content: center;
+        width: 100%; 
+        margin: 0;
+        padding: 0;
+        border: 1px solid white;
     }
 
     .comments-container {
@@ -190,9 +207,5 @@ footer {
         font-size: 16px;
     }
 }
-/* .comment:hover {
-        background: rgb(61, 64, 107)
-    } */
-    .description-page-price{
-        color:yellow ;
-    }
+
+    
