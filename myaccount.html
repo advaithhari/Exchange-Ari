@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+     
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+    <script src="lib/js/firebaseConfig.js" defer></script>
+ <!-- Auth -->   
+ <script src="https://apis.google.com/js/platform.js" async defer></script>
+ <meta name="google-signin-client_id" content="768412568472-8u5hs8hgfo983bfo2mf2g8657a5c8llb.apps.googleusercontent.com">
+ 
+    <script src="lib/js/account.js" defer></script>
+ 
+</head>
+<body>
+    <div class="signs">
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <a href="#" class="signOut" onclick="onSignOut();">Sign out</a>
+    </div>
+
+
+    <div class="main-container">
+        <div class="content-container">
+            <p class="description-page-title"></p>
+            <p class="description-page-category"></p>
+            <p class="description-page-price"></p>
+            <p class="description-page-description"></p>
+            <img class = "description-page-image"></img>
+        </div>
+</body>
+</html>
