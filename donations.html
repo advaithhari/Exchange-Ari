@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item</title>
+ 
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+    <script src="lib/js/firebaseConfig.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+    <!-- Icons -->
+    <link rel="icon" href="src/Ari Exchange.png">
+ 
+    <!-- Styles/Fonts -->
+    <link rel="stylesheet" href="lib/css/style.css">
+    <link rel="stylesheet" href="lib/css/page.css">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&family=Roboto&display=swap" rel="stylesheet">
+ 
+ 
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="768412568472-8u5hs8hgfo983bfo2mf2g8657a5c8llb.apps.googleusercontent.com">
+ 
+ 
+    <script src="lib/js/donations.js" defer></script>
+ 
+ 
+   
+ 
+ 
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand nav-title" href="index.html">ARI Exchange</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-button" id="home" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-button" href="index.html#allRequests">Explore</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-button" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    <a href="#" class="signOut" onclick="onSignOut();">Sign out</a>
+                </li>
+            </ul>
+        </div>
+        
+    </nav>
+    <div class="main-container">
+        <div class="content-container">
+            <p class="description-page-title"></p>
+            <p class="description-page-category"></p>
+            <p class="description-page-price"></p>
+            <p class="description-page-description"></p>
+            <img class = "description-page-image"></img>
+        </div>
+        <table class = "hahatable" style="width:100%">
+            <tr>
+              <th>Object</th>
+              <th>Price</th>
+            </tr>
+            <tr>
+              <td><p class = "thisobj">hey</p></td>
+            
+            </tr>
+           <tr class = "trclass">
+            <td class = "tdclass"></td>
+           </tr>
+          </table>
+          
+        <div class="comments-container">
+            <ul class="all-comments">
+                
+            </ul>
+            <form class="comment-form">
+                <input type="number" id="quantity-input" name="quantity" min="1" >
+                <label for="quantity">Quantity</label>
+               
+                <input type="text" id="comment-input" autocomplete="off">   
+                <label>Food type</label>
+            
+                
+                <button type="submit" id="comment-submit">Comment</button>
+            </form>
+        </div>
+    </div>
+    <div class="avatar" data-tooltip="Thinking Cat"></div>
+ 
+    <!-- <footer class="Foot">All Rights Owned By  Advaith Hari | Ryan Poon | Ibrahim Kabia |
+        <br>  © 2020 Ari-Exchange | Copyright
+    </footer> -->
+ 
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
+ 
+ 
+
