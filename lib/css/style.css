@@ -15,6 +15,21 @@
     background: #555;
 }
 
+.requestbutton {
+    width: 30%;
+    margin: 3% 0;
+    padding: 1%;
+    background: linear-gradient(268deg, #EDB241 0%, #B51EEA 97.59%);
+    border-radius: 8px;
+    text-align: center;
+    font-family: Nunito;
+    font-style: normal;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+    color: white;
+    transition: all 200ms;
+    visibility: hidden;
+}
 * {
     margin: 0;
     scroll-behavior: smooth;
@@ -219,6 +234,22 @@ a:hover {
     background: rgba(0, 0, 0, 0.7)
 }
 
+.requests-modal {
+    pointer-events: none;
+    font-family: Nunito;
+    letter-spacing: 0.05em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    max-height: 90%;
+    transform: translate(-50%, -50%);
+    border-radius: 4px;
+    padding: 2%;
+    opacity: 0;
+    background: #3c3f4d;
+    transition: all 300ms;
+}
 .request-modal {
     pointer-events: none;
     font-family: Nunito;
@@ -235,6 +266,7 @@ a:hover {
     background: #3c3f4d;
     transition: all 300ms;
 }
+
 
 .modal-body {
     max-height: calc(100vh - 200px);
@@ -473,7 +505,7 @@ footer {
         margin: 10% 0;
         width: 100%;
     }
-
+    
     .card-container {
         flex-direction: column;
         align-items: center;
