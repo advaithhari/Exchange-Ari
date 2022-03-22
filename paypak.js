@@ -1,23 +1,27 @@
-var paypal = require('paypal-rest-sdk');
 
-paypal.configure({
-    'mode': 'sandbox', //sandbox or live
-    'client_id': 'ASqoNJ95T5DyXjttd8HtJ9fZG6MpI7ZytL8E8zMAH03oDGvoqSNyTj_MLs8gB5wh9fSUfLCaDtkJ9gy9',
-    'client_secret': 'EO6BSdjpozoAr1LUdTQNDmDrJQ8wO3Rad5GS4SdP3rwxRo4xQRdNWerkMJAxIG_v5chOZC-K6gnGGp3c'
-  });
+// paypal.configure({
+//     'mode': 'sandbox', //sandbox or live
+//     'client_id': 'ASqoNJ95T5DyXjttd8HtJ9fZG6MpI7ZytL8E8zMAH03oDGvoqSNyTj_MLs8gB5wh9fSUfLCaDtkJ9gy9',
+//     'client_secret': 'EO6BSdjpozoAr1LUdTQNDmDrJQ8wO3Rad5GS4SdP3rwxRo4xQRdNWerkMJAxIG_v5chOZC-K6gnGGp3c'
+//   });
 
   paypal.Buttons({
 
     // Sets up the transaction when a payment button is clicked
     createOrder: function(data, actions) {
-      return actions.order.create({
-        purchase_units: [{
-          amount: {
-            value: '77.44' // Can reference variables or functions. Example: `value: document.getElementById('...').value`
-          }
-        }]
-      });
-    },
+  return actions.order.create({
+    intent: 'CAPTURE',
+    purchase_units: [{
+      amount: {
+        currency_code: 'USD',
+        value: '0.01'
+      },
+      payee: {
+        email_address: 'ahari-22@peddie.org'
+      }
+    }]
+  });
+},
 
     // Finalize the transaction after payer approval
     onApprove: function(data, actions) {

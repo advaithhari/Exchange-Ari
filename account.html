@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib/js/userConfig.js" defer></script>
+    <script src="lib/js/accountUSer.js" defer></script>
+    <link rel="stylesheet" href="lib/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f63eb37a69.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="lib/css/glide.core.min.css">
+    <link rel="stylesheet" href="lib/css/glide.css">
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="768412568472-8u5hs8hgfo983bfo2mf2g8657a5c8llb.apps.googleusercontent.com">
+     
+     
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand nav-title" href="index.html">ARI Exchange</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-button" id="home" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-button" href="index.html#allRequests">Explore</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-button" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    <a href="#" class="signOut" onclick="onSignOut();">Sign out</a>
+                </li>
+            </ul>
+        </div>
+        
+    </nav>
+</body>
+</html>
